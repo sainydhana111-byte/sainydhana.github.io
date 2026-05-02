@@ -4,61 +4,69 @@
     <title>Sai Nydhana | Vision Path</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            background: #f5f5f5;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
         }
 
         header {
-            background: #111;
-            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #000, #111);
             text-align: center;
-            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 50px;
+            letter-spacing: 3px;
+        }
+
+        header p {
+            font-size: 20px;
+            color: #ccc;
         }
 
         section {
-            max-width: 1000px;
+            padding: 60px 20px;
+            max-width: 900px;
             margin: auto;
-            padding: 20px;
         }
 
         .card {
-            background: white;
-            margin: 20px 0;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
         }
 
-        h1, h2 {
-            margin-top: 0;
+        h2 {
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
         }
 
         ul {
             line-height: 1.8;
         }
 
-        .button {
+        .btn {
             display: inline-block;
-            background: #007BFF;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: 1px solid white;
             color: white;
-            padding: 12px 18px;
             text-decoration: none;
-            border-radius: 8px;
-            margin-right: 10px;
         }
 
-        .button:hover {
-            background: #0056b3;
+        .btn:hover {
+            background: white;
+            color: black;
         }
 
         footer {
-            background: #111;
-            color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            padding: 30px;
+            background: #111;
         }
     </style>
 </head>
@@ -67,68 +75,36 @@
 
 <header>
     <h1>SAI NYDHANA</h1>
-    <p>Developer | Assistive Technology Innovator</p>
+    <p>VISION PATH — Assistive Technology for the Visually Impaired</p>
+    <a class="btn" href="#project">Explore Project</a>
 </header>
 
-<section>
-
+<section id="project">
     <div class="card">
-        <h2>About Me</h2>
+        <h2>VISION PATH</h2>
         <p>
-            I am passionate about developing innovative assistive technologies that improve accessibility and independence for visually impaired individuals.
-            My primary project, <strong>VISION PATH</strong>, focuses on obstacle detection and safe navigation.
+            A portable ultrasonic obstacle detection device designed to improve mobility
+            and safety for visually impaired individuals.
         </p>
-    </div>
-
-    <div class="card">
-        <h2>Project: VISION PATH</h2>
-        <p>
-            VISION PATH is a portable handheld ultrasonic obstacle detection device designed for visually impaired individuals.
-            It provides real-time obstacle detection using ultrasonic sensing with dual feedback systems:
-        </p>
-
-        <ul>
-            <li>Ultrasonic obstacle detection</li>
-            <li>Buzzer audio alerts</li>
-            <li>Vibration motor tactile alerts</li>
-            <li>LED night assistance system</li>
-            <li>Portable handheld design</li>
-            <li>Rechargeable battery powered</li>
-        </ul>
     </div>
 
     <div class="card">
         <h2>Key Features</h2>
         <ul>
-            <li>Detection range: 50 cm – 100 cm</li>
-            <li>Indoor and outdoor optimized modes</li>
-            <li>Suitable for partial and complete blindness users</li>
-            <li>Affordable solution (~₹1500)</li>
-            <li>No smartphone or internet dependency</li>
-            <li>Compact and pocket-friendly design</li>
+            <li>Ultrasonic obstacle detection</li>
+            <li>Dual feedback (buzzer + vibration)</li>
+            <li>LED night assistance</li>
+            <li>Portable handheld design</li>
+            <li>Low-cost and scalable</li>
         </ul>
     </div>
 
     <div class="card">
-        <h2>Future Scope</h2>
+        <h2>Technology</h2>
         <ul>
-            <li>Mobile application integration</li>
-            <li>GPS emergency assistance</li>
-            <li>Voice alert system</li>
-            <li>Waterproof enclosure</li>
-            <li>ESP32 camera integration</li>
-            <li>Auditory feedback enhancements</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
             <li>Arduino Nano</li>
-            <li>ESP32</li>
-            <li>IoT Development</li>
-            <li>Assistive Technology Prototyping</li>
+            <li>HC-SR04 Ultrasonic Sensor</li>
+            <li>Rechargeable battery system</li>
         </ul>
     </div>
 
@@ -137,14 +113,13 @@
         <p>Email: nydhan.sai@amtz.in</p>
         <p>Phone: 8790063257</p>
 
-        <a class="button" href="mailto:nydhan.sai@amtz.in">Email Me</a>
-        <a class="button" href="tel:8790063257">Call Me</a>
+        <a class="btn" href="mailto:nydhan.sai@amtz.in">Email</a>
+        <a class="btn" href="tel:8790063257">Call</a>
     </div>
-
 </section>
 
 <footer>
-    <p>© 2026 Sai Nydhana | Vision Path</p>
+    <p>© 2026 Sai Nydhana</p>
 </footer>
 
 </body>
