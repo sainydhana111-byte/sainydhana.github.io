@@ -2,7 +2,12 @@
 <html>
 <head>
     <title>Sai Nydhana | Vision Path</title>
+
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -10,14 +15,20 @@
             color: white;
         }
 
+        /* HERO SECTION */
         header {
             height: 100vh;
+            background: url('device.jpg') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #000, #111);
             text-align: center;
+        }
+
+        .overlay {
+            background: rgba(0,0,0,0.7);
+            padding: 40px;
+            border-radius: 10px;
         }
 
         header h1 {
@@ -27,26 +38,7 @@
 
         header p {
             font-size: 20px;
-            color: #ccc;
-        }
-
-        section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .card {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            border-bottom: 2px solid #444;
-            padding-bottom: 10px;
-        }
-
-        ul {
-            line-height: 1.8;
+            color: #ddd;
         }
 
         .btn {
@@ -63,6 +55,33 @@
             color: black;
         }
 
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+        /* ANIMATION */
+        .fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+
+        .fade.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         footer {
             text-align: center;
             padding: 30px;
@@ -74,53 +93,71 @@
 <body>
 
 <header>
-    <h1>SAI NYDHANA</h1>
-    <p>VISION PATH — Assistive Technology for the Visually Impaired</p>
-    <a class="btn" href="#project">Explore Project</a>
+    <div class="overlay">
+        <h1>SAI NYDHANA</h1>
+        <p>VISION PATH — Smart Navigation for the Visually Impaired</p>
+        <a href="#project" class="btn">Explore</a>
+    </div>
 </header>
 
-<section id="project">
-    <div class="card">
-        <h2>VISION PATH</h2>
-        <p>
-            A portable ultrasonic obstacle detection device designed to improve mobility
-            and safety for visually impaired individuals.
-        </p>
-    </div>
+<section id="project" class="fade">
+    <h2>VISION PATH</h2>
+    <p>
+        A portable ultrasonic obstacle detection device designed to improve safety and mobility
+        for visually impaired individuals using dual feedback systems.
+    </p>
+</section>
 
-    <div class="card">
-        <h2>Key Features</h2>
-        <ul>
-            <li>Ultrasonic obstacle detection</li>
-            <li>Dual feedback (buzzer + vibration)</li>
-            <li>LED night assistance</li>
-            <li>Portable handheld design</li>
-            <li>Low-cost and scalable</li>
-        </ul>
-    </div>
+<section class="fade">
+    <h2>Key Features</h2>
+    <ul>
+        <li>Ultrasonic obstacle detection</li>
+        <li>Dual feedback (buzzer + vibration)</li>
+        <li>LED night assistance</li>
+        <li>Portable handheld design</li>
+        <li>Affordable and scalable</li>
+    </ul>
+</section>
 
-    <div class="card">
-        <h2>Technology</h2>
-        <ul>
-            <li>Arduino Nano</li>
-            <li>HC-SR04 Ultrasonic Sensor</li>
-            <li>Rechargeable battery system</li>
-        </ul>
-    </div>
+<section class="fade">
+    <h2>Technology</h2>
+    <ul>
+        <li>Arduino Nano</li>
+        <li>HC-SR04 Sensor</li>
+        <li>Rechargeable battery system</li>
+    </ul>
+</section>
 
-    <div class="card">
-        <h2>Contact</h2>
-        <p>Email: nydhan.sai@amtz.in</p>
-        <p>Phone: 8790063257</p>
+<section class="fade">
+    <h2>Contact</h2>
+    <p>Email: nydhan.sai@amtz.in</p>
+    <p>Phone: 8790063257</p>
 
-        <a class="btn" href="mailto:nydhan.sai@amtz.in">Email</a>
-        <a class="btn" href="tel:8790063257">Call</a>
-    </div>
+    <a class="btn" href="mailto:nydhan.sai@amtz.in">Email</a>
+    <a class="btn" href="tel:8790063257">Call</a>
 </section>
 
 <footer>
     <p>© 2026 Sai Nydhana</p>
 </footer>
+
+<script>
+    const elements = document.querySelectorAll('.fade');
+
+    function showOnScroll() {
+        const trigger = window.innerHeight * 0.85;
+
+        elements.forEach(el => {
+            const top = el.getBoundingClientRect().top;
+
+            if (top < trigger) {
+                el.classList.add('show');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', showOnScroll);
+</script>
 
 </body>
 </html>
