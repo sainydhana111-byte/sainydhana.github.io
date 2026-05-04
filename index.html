@@ -1,171 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Nydhana | Vision Path</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Nydhana | Vision Path</title>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+<style>
+html { scroll-behavior: smooth; }
 
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #050505;
-            color: white;
-            overflow-x: hidden;
-        }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #050505;
+    color: white;
+}
 
-        /* LOGO STICKY */
-        .nav-logo {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            width: 80px; /* Adjust based on your logo size */
-        }
+/* LOGO */
+.nav-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: 80px;
+}
 
-        /* HERO SECTION with Background Device */
-        header {
-            height: 100vh;
-            /* Replace 'device-bg.jpg' with your second image */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('device-bg.jpg') no-repeat center center/cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+/* HERO */
+header {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('device-bg.jpg') no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-        .overlay {
-            padding: 40px;
-            border-radius: 10px;
-        }
+.overlay { padding: 40px; }
 
-        header h1 {
-            font-size: clamp(40px, 8vw, 70px);
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+header h1 {
+    font-size: clamp(40px, 8vw, 70px);
+    letter-spacing: 5px;
+}
 
-        header p {
-            font-size: 20px;
-            color: #bbb;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            border: 2px solid white;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+/* SECTIONS */
+section {
+    padding: 100px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
 
-        .btn:hover {
-            background: white;
-            color: black;
-        }
+.grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
 
-        section {
-            padding: 100px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
+.grid-text { flex: 1; }
+.grid-img { flex: 1; }
 
-        .grid {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
+.grid-img img {
+    width: 100%;
+    border-radius: 15px;
+}
 
-        .grid-text { flex: 1; min-width: 300px; }
-        .grid-img { flex: 1; min-width: 300px; }
+h2 {
+    border-left: 5px solid #00ff88;
+    padding-left: 10px;
+}
 
-        .grid-img img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
-        }
+/* VIDEO */
+.video-container {
+    margin-top: 40px;
+}
 
-        h2 {
-            font-size: 32px;
-            border-left: 5px solid white;
-            padding-left: 15px;
-            margin-bottom: 30px;
-        }
+video { width: 100%; }
 
-        /* VIDEO CONTAINER */
-        .video-container {
-            width: 100%;
-            margin: 40px 0;
-            border-radius: 15px;
-            overflow: hidden;
-            background: #111;
-        }
+/* ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
 
-        video {
-            width: 100%;
-            display: block;
-        }
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        ul {
-            line-height: 2;
-            font-size: 18px;
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li::before {
-            content: "•";
-            color: #00ff88;
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        /* ANIMATION */
-        .fade {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
-        }
-
-        .fade.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            background: #0a0a0a;
-            border-top: 1px solid #222;
-        }
-    </style>
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #111;
+}
+</style>
 </head>
+
 <body>
 
-<!-- 1. VISION PATH LOGO -->
-<img src="LOGO.jpeg" alt="Vision Path Logo" class="nav-logo">
+<!-- LOGO -->
+<img src="LOGO.jpeg" class="nav-logo">
 
+<!-- HERO -->
 <header>
     <div class="overlay">
         <h1>SAI NYDHANA</h1>
         <p>VISION PATH — Smart Navigation for the Visually Impaired</p>
-        <a href="#project" class="btn">Explore Device</a>
+        <a href="#about" class="btn">Explore</a>
     </div>
 </header>
 
-<section id="project" class="fade">
+<!-- PROJECT IMAGE -->
+<section class="fade">
     <div class="grid">
         <div class="grid-text">
             <h2>The Vision</h2>
@@ -175,26 +128,87 @@
                 awareness of the surroundings.
             </p>
         </div>
-        <!-- 3. OBSTACLE DETECTION IMAGE -->
         <div class="grid-img">
-            <img src="obstacle_detection.png" alt="Obstacle Detection in Action">
+            <img src="obstacle_detection.png">
         </div>
     </div>
 </section>
 
+<!-- VIDEO -->
 <section class="fade">
     <h2>Project Showcase</h2>
     <div class="video-container">
-        <!-- ADD YOUR VIDEO FILE HERE -->
-        <video controls poster="video-thumbnail.jpg">
+        <video controls>
             <source src="VisionPath_Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
     </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="fade">
+    <h2>About Me</h2>
+    <p>
+        I am <b>Sai Nydhana</b>, an innovator and technology enthusiast focused on building impactful solutions 
+        for real-world problems. My work is driven by a strong passion to improve accessibility and independence 
+        for visually impaired individuals.
+    </p>
+    <p>
+        I specialize in embedded systems, IoT, and assistive technology development using platforms like Arduino 
+        and ESP-based systems. My goal is to create affordable and practical solutions that can be widely adopted 
+        in society.
+    </p>
+</section>
+
+<!-- CHALLENGE -->
+<section class="fade">
+    <h2>The Challenge</h2>
+    <p>
+        Visually impaired individuals face significant challenges in navigating both indoor and outdoor environments. 
+        Traditional white canes only provide feedback only after physical contact with obstacles, which can lead to accidents 
+        and injuries.
+    </p>
+    <p>
+        Existing smart canes and assistive devices attempt to solve this problem but often suffer from limitations such as:
+    </p>
+    <ul>
+        <li>Delayed obstacle detection</li>
+        <li>High cost and lack of affordability</li>
+        <li>Bulky and inconvenient design</li>
+        <li>Dependence on continuous cane usage</li>
+    </ul>
+</section>
+
+<!-- SOLUTION -->
+<section class="fade">
+    <h2>Introducing Vision Path</h2>
+    <p>
+        To address these challenges, I developed <b>VISION PATH</b> — a portable, handheld obstacle detection device 
+        designed to improve independent mobility for visually impaired individuals.
+    </p>
+    <p>
+        Unlike traditional solutions, Vision Path is a compact, torch-like device that provides real-time obstacle 
+        detection using ultrasonic sensing technology. It is simple, effective, and accessible to users of all age groups.
+    </p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="fade">
+    <h2>How It Works</h2>
+    <p>
+        Vision Path uses an ultrasonic sensor to detect obstacles within a safe range of 50 cm to 100 cm.
+    </p>
+    <ul>
+        <li>Audio alerts using a buzzer</li>
+        <li>Vibration feedback for tactile response</li>
+    </ul>
+    <p>
+        This dual feedback system ensures reliable alerts in both noisy and silent environments.
+    </p>
+</section>
+
 <section class="fade">
     <div class="grid">
+        
         <div class="grid-text">
             <h2>Key Features</h2>
             <ul>
@@ -205,6 +219,7 @@
                 <li>Affordable and scalable</li>
             </ul>
         </div>
+
         <div class="grid-text">
             <h2>Technology</h2>
             <ul>
@@ -214,16 +229,50 @@
                 <li>TP4056 Charging + Boost Converter</li>
             </ul>
         </div>
+
     </div>
 </section>
+<!-- ADVANTAGES -->
+<section class="fade">
+    <h2>Key Advantages</h2>
+    <ul>
+        <li>Portable and pocket-friendly design</li>
+        <li>No need for continuous cane usage</li>
+        <li>Affordable and cost-effective solution</li>
+        <li>Works without internet or smartphone</li>
+        <li>LED support for night-time navigation</li>
+        <li>Suitable for both indoor and outdoor use</li>
+    </ul>
+</section>
 
-<section class="fade" style="text-align: center;">
+<!-- IMPACT -->
+<section class="fade">
+    <h2>Impact & Vision</h2>
+    <p>
+        Vision Path enhances user confidence, safety, and independence by providing early obstacle detection.
+    </p>
+    <p>
+        The goal is to make assistive technology affordable and accessible for widespread use.
+    </p>
+</section>
+
+<!-- FUTURE -->
+<section class="fade">
+    <h2>Future Development</h2>
+    <ul>
+        <li>Mobile application integration</li>
+        <li>GPS-based navigation</li>
+        <li>Voice alert system</li>
+        <li>Camera-based detection using ESP32</li>
+        <li>Waterproof design</li>
+    </ul>
+</section>
+
+<!-- CONTACT -->
+<section class="fade">
     <h2>Get In Touch</h2>
     <p>Email: nydhan.sai@amtz.in</p>
-    <p>Phone: +91 8790063257</p>
-    <br>
-    <a class="btn" href="mailto:nydhan.sai@amtz.in">Send Email</a>
-    <a class="btn" href="tel:8790063257">Call Now</a>
+    <p>Phone: 8790063257</p>
 </section>
 
 <footer>
@@ -231,18 +280,19 @@
 </footer>
 
 <script>
-    const elements = document.querySelectorAll('.fade');
-    function showOnScroll() {
-        const trigger = window.innerHeight * 0.9;
-        elements.forEach(el => {
-            const top = el.getBoundingClientRect().top;
-            if (top < trigger) {
-                el.classList.add('show');
-            }
-        });
-    }
-    window.addEventListener('scroll', showOnScroll);
-    window.addEventListener('load', showOnScroll);
+const elements = document.querySelectorAll('.fade');
+
+function showOnScroll() {
+    const trigger = window.innerHeight * 0.9;
+    elements.forEach(el => {
+        if (el.getBoundingClientRect().top < trigger) {
+            el.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll);
 </script>
 
 </body>
