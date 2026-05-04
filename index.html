@@ -1,82 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Nydhana | Vision Path</title>
-    <style>
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: sans-serif; background: #000; color: #fff; }
-        
-        /* LOGO */
-        .logo {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 70px;
-            z-index: 1000;
-            border-radius: 50%;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Nydhana | Vision Path</title>
 
-        header {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: #111; /* Fallback color */
-        }
+<style>
+html { scroll-behavior: smooth; }
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 20px;
-            border: 1px solid white;
-            color: white;
-            text-decoration: none;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+}
 
-        section { padding: 60px 20px; max-width: 900px; margin: auto; }
-        
-        .feature-img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
+/* LOGO */
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    z-index: 1000;
+}
 
-        video { width: 100%; border-radius: 10px; margin-top: 20px; }
-    </style>
+/* HERO */
+header {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* VIDEO */
+.bg-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.4);
+}
+
+/* TEXT */
+.overlay {
+    z-index: 1;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+}
+
+/* SECTION */
+section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+}
+
+.feature-img {
+    width: 100%;
+    border-radius: 12px;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Logo with simple filename -->
-    <img src="logo.jpg" alt="Vision Path Logo" class="logo">
+<!-- LOGO -->
+<img src="logo.jpg" class="logo">
 
-    <header>
-        <div class="overlay">
-            <h1>SAI NYDHANA</h1>
-            <p>VISION PATH — Smart Navigation for the Visually Impaired</p>
-            <a href="#project" class="btn">Explore Device</a>
-        </div>
-    </header>
+<header>
 
-    <section id="project">
-        <h2>The Vision</h2>
-        <p>Vision Path is a portable ultrasonic obstacle detection device designed for safety and mobility.</p>
-        
-        <!-- Image with simple filename -->
-        <img src="obstacle.jpg" alt="Obstacle Detection in Action" class="feature-img">
-    </section>
+<!-- VIDEO -->
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="video.mp4" type="video/mp4">
+</video>
 
-    <section>
-        <h2>Project Showcase</h2>
-        <!-- Video with simple filename -->
-        <video controls>
-            <source src="demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </section>
+<div class="overlay">
+    <h1>SAI NYDHANA</h1>
+    <p>VISION PATH — Smart Navigation</p>
+    <a href="#details" class="btn">Explore</a>
+</div>
+
+</header>
+
+<section id="details">
+
+<div class="grid">
+
+<div>
+    <h2>Obstacle Detection</h2>
+    <p>
+        Vision Path uses ultrasonic sensors to detect obstacles and alert users
+        using vibration and sound.
+    </p>
+</div>
+
+<div>
+    <img src="device.jpg" class="feature-img">
+</div>
+
+</div>
+
+</section>
 
 </body>
 </html>
