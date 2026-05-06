@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trial Videos | Vision Path</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #1c2b20;
+  --bg2:       #233029;
+  --bg3:       #2a3a2f;
+  --bg4:       #324038;
+  --cream:     #f0ead8;
+  --cream-dim: #c8bfa8;
+  --amber:     #d4a853;
+  --amber-dim: #a87d35;
+  --amber-glow:rgba(212,168,83,0.12);
+  --sage:      #8fbc94;
+  --sage-dim:  #6a9970;
+  --sage-glow: rgba(143,188,148,0.1);
+  --text:      #eee8d5;
+  --text-muted:#9aab92;
+  --border-a:  rgba(212,168,83,0.18);
+  --border-s:  rgba(143,188,148,0.15);
+  --shadow:    0 24px 64px rgba(0,0,0,0.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--amber-dim);border-radius:3px}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(28,43,32,0.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(143,188,148,0.08)}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-img{height:40px;width:auto;object-fit:contain}
+.nav-wordmark{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--amber);font-style:italic}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--amber)}
+.nav-links a.active{color:var(--amber)}
+.nav-buy{color:var(--amber)!important;border:1px solid var(--border-a)!important;padding:7px 16px!important;border-radius:6px!important;background:var(--amber-glow)!important}
+
+/* ─── PAGE ─── */
+.page{padding-top:88px;min-height:100vh}
+
+/* ─── HERO STRIP ─── */
+.trails-hero{position:relative;overflow:hidden;padding:72px 24px 60px;text-align:center;background:var(--bg2);border-bottom:1px solid rgba(143,188,148,0.07)}
+.trails-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 120%,rgba(212,168,83,0.06),transparent 65%),radial-gradient(ellipse 60% 60% at 80% 20%,rgba(143,188,148,0.05),transparent 60%)}
+/* Decorative horizontal lines */
+.trails-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(143,188,148,0.02) 1px,transparent 1px);background-size:100% 48px;pointer-events:none}
+.trails-hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.trails-eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-s);border-radius:100px;padding:6px 20px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;background:var(--sage-glow);margin-bottom:24px;animation:fadeUp .8s ease both}
+.trails-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,80px);font-weight:700;color:var(--cream);line-height:1.05;animation:fadeUp .8s .1s ease both}
+.trails-hero h1 em{color:var(--amber);font-style:italic}
+.trails-hero p{margin-top:18px;color:var(--text-muted);font-size:16px;line-height:1.7;animation:fadeUp .8s .2s ease both}
+.hero-meta{display:flex;gap:32px;justify-content:center;margin-top:36px;animation:fadeUp .8s .3s ease both;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
+.hero-meta-item span.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;box-shadow:0 0 8px rgba(212,168,83,0.5)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── FILTER TABS ─── */
+.filter-bar{display:flex;justify-content:center;gap:10px;padding:40px 24px 0;flex-wrap:wrap}
+.filter-btn{padding:9px 22px;border-radius:100px;border:1px solid rgba(255,255,255,0.07);background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all .25s;letter-spacing:.3px}
+.filter-btn:hover{border-color:var(--border-a);color:var(--cream)}
+.filter-btn.active{background:rgba(212,168,83,0.1);border-color:var(--border-a);color:var(--amber)}
+
+/* ─── MAIN CONTENT ─── */
+.trails-main{max-width:1200px;margin:0 auto;padding:56px 24px 100px}
+
+/* ─── FEATURED (first trial) ─── */
+.featured-section{margin-bottom:64px}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';width:24px;height:1px;background:var(--sage)}
+
+.featured-card{background:var(--bg2);border:1px solid var(--border-a);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 0 80px rgba(212,168,83,0.06),var(--shadow);transition:box-shadow .35s}
+.featured-card:hover{box-shadow:0 0 120px rgba(212,168,83,0.1),var(--shadow)}
+.featured-video-wrap{position:relative;background:#0d1710;border-right:1px solid var(--border-a)}
+.featured-video-wrap video{width:100%;display:block;min-height:320px;object-fit:cover}
+.featured-badge{position:absolute;top:16px;left:16px;background:rgba(212,168,83,0.15);border:1px solid var(--border-a);border-radius:100px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--amber)}
+.featured-info{padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
+.trial-number{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-muted);margin-bottom:12px;letter-spacing:1px}
+.featured-info h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:16px}
+.featured-info p{font-size:14.5px;color:var(--text-muted);line-height:1.75;margin-bottom:24px}
+.trial-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.trial-tag{padding:5px 14px;border:1px solid var(--border-s);border-radius:100px;font-size:12px;color:var(--sage);background:var(--sage-glow)}
+.trial-stats{display:flex;gap:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)}
+.trial-stat{text-align:center}
+.trial-stat-val{font-family:'DM Mono',monospace;font-size:18px;color:var(--amber);font-weight:500}
+.trial-stat-lbl{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+
+/* ─── GRID ─── */
+.trials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+
+.trial-card{background:var(--bg2);border:1px solid rgba(255,255,255,0.05);border-radius:16px;overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s;position:relative}
+.trial-card:hover{border-color:var(--border-a);transform:translateY(-5px);box-shadow:0 20px 60px rgba(212,168,83,0.07)}
+.trial-video-wrap{position:relative;background:#0d1710;aspect-ratio:16/9;overflow:hidden}
+.trial-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.trial-video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,43,32,0.6) 0%,transparent 50%);pointer-events:none}
+.trial-num-badge{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(212,168,83,0.15);border:1px solid var(--border-a);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);font-weight:500}
+.trial-card-body{padding:24px}
+.trial-card-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px}
+.trial-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:10px}
+.trial-card p{font-size:13.5px;color:var(--text-muted);line-height:1.65;margin-bottom:18px}
+.trial-card-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.trial-card-tag{padding:4px 12px;border:1px solid var(--border-s);border-radius:100px;font-size:11px;color:var(--sage);background:var(--sage-glow)}
+.trial-card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05)}
+.trial-card-meta{font-size:12px;color:var(--text-muted);font-family:'DM Mono',monospace}
+.trial-result{display:flex;align-items:center;gap:6px;font-size:12px}
+.result-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.result-dot.success{background:var(--sage);box-shadow:0 0 8px rgba(143,188,148,0.5)}
+.result-dot.testing{background:var(--amber);box-shadow:0 0 8px rgba(212,168,83,0.5)}
+
+/* ─── OBSERVATIONS ─── */
+.observations{margin-top:64px;background:var(--bg2);border:1px solid var(--border-a);border-radius:20px;padding:48px;position:relative;overflow:hidden}
+.observations::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(ellipse at top right,rgba(212,168,83,0.05),transparent 70%);pointer-events:none}
+.observations h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--cream);margin-bottom:8px}
+.observations>p{font-size:15px;color:var(--text-muted);margin-bottom:40px;max-width:600px}
+.obs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.obs-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:24px;transition:border-color .3s}
+.obs-card:hover{border-color:var(--border-a)}
+.obs-icon{font-size:26px;margin-bottom:14px}
+.obs-card h4{font-size:15px;font-weight:600;color:var(--cream);margin-bottom:8px}
+.obs-card p{font-size:13px;color:var(--text-muted);line-height:1.65}
+
+/* ─── CTA BAND ─── */
+.cta-band{margin-top:64px;background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--border-a);border-radius:20px;padding:52px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-text h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--cream);margin-bottom:8px}
+.cta-text p{font-size:15px;color:var(--text-muted);line-height:1.6;max-width:480px}
+.cta-actions{display:flex;gap:14px;flex-wrap:wrap;flex-shrink:0}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:linear-gradient(135deg,var(--amber),var(--amber-dim));color:#1c2b20;text-decoration:none;font-weight:700;font-size:14px;border-radius:8px;transition:all .35s;box-shadow:0 8px 28px rgba(212,168,83,0.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(212,168,83,0.35)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border:1px solid var(--border-s);color:var(--sage);text-decoration:none;font-size:14px;border-radius:8px;transition:all .35s;background:rgba(143,188,148,0.05)}
+.btn-outline:hover{border-color:var(--sage);background:var(--sage-glow);transform:translateY(-2px)}
+
+/* ─── FOOTER ─── */
+footer{text-align:center;padding:48px 24px;border-top:1px solid rgba(212,168,83,0.07);margin-top:0}
+footer::before{content:'';display:block;width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent);margin:0 auto 40px}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--amber);font-style:italic;margin-bottom:10px}
+footer p{font-size:13px;color:var(--text-muted)}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){nav{padding:16px 20px}.nav-links{display:none}.featured-card{grid-template-columns:1fr}.featured-video-wrap{border-right:none;border-bottom:1px solid var(--border-a)}.featured-info{padding:32px 28px}.cta-band{flex-direction:column;padding:36px 28px}}
+@media(max-width:560px){.trials-grid{grid-template-columns:1fr}.observations{padding:32px 24px}.obs-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="LOGO_revised.jpg" class="nav-logo-img" onerror="this.style.display='none'" alt="Vision Path Logo">
+    <span class="nav-wordmark">Vision Path</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#solution">Solution</a>
+    <a href="trails.html" class="active">Trials</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="buy.html" class="nav-buy">Buy Now</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="trails-hero">
+    <div class="trails-hero-inner">
+      <div class="trails-eyebrow">🎬 Field Testing · 2026</div>
+      <h1>Trial <em>Videos</em></h1>
+      <p>Real-world testing of Vision Path — obstacle detection performance across different environments and scenarios.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span class="dot"></span> 3 Trial Sessions</div>
+        <div class="hero-meta-item"><span class="dot"></span> Multiple Environments</div>
+        <div class="hero-meta-item"><span class="dot"></span> Live Obstacle Detection</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterTrials('all',this)">All Trials</button>
+    <button class="filter-btn" onclick="filterTrials('indoor',this)">Indoor</button>
+    <button class="filter-btn" onclick="filterTrials('outdoor',this)">Outdoor</button>
+    <button class="filter-btn" onclick="filterTrials('night',this)">Low Light</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="trails-main">
+
+    <!-- FEATURED TRIAL 1 -->
+    <div class="featured-section reveal">
+      <p class="section-label">Featured Trial</p>
+      <div class="featured-card" data-category="indoor">
+        <div class="featured-video-wrap">
+          <video controls preload="metadata">
+            <source src="trail1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="featured-badge">Trial #1 · Featured</div>
+        </div>
+        <div class="featured-info">
+          <div class="trial-number">TRIAL · 001</div>
+          <h2>Indoor Navigation Test</h2>
+          <p>First formal trial of Vision Path in a structured indoor environment. The device was tested across multiple obstacle types — furniture edges, doorframes, and low-hanging objects — to evaluate detection reliability and alert timing.</p>
+          <div class="trial-tags">
+            <span class="trial-tag">Indoor</span>
+            <span class="trial-tag">Static Obstacles</span>
+            <span class="trial-tag">Multiple Heights</span>
+          </div>
+          <div class="trial-stats">
+            <div class="trial-stat">
+              <div class="trial-stat-val">100cm</div>
+              <div class="trial-stat-lbl">Max Range</div>
+            </div>
+            <div class="trial-stat">
+              <div class="trial-stat-val">~50ms</div>
+              <div class="trial-stat-lbl">Alert Latency</div>
+            </div>
+            <div class="trial-stat">
+              <div class="trial-stat-val">Dual</div>
+              <div class="trial-stat-lbl">Feedback</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID: TRIAL 2 & 3 -->
+    <div class="trials-grid">
+
+      <!-- Trial 2 -->
+      <div class="trial-card reveal" data-category="outdoor">
+        <div class="trial-video-wrap">
+          <video controls preload="metadata">
+            <source src="trail2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="trial-video-overlay"></div>
+          <div class="trial-num-badge">02</div>
+        </div>
+        <div class="trial-card-body">
+          <div class="trial-card-num">TRIAL · 002</div>
+          <h3>Outdoor Walkway Trial</h3>
+          <p>Vision Path tested outdoors on a pedestrian path with uneven terrain, poles, and parked vehicles. Evaluating detection consistency in open-air conditions with ambient sound interference.</p>
+          <div class="trial-card-tags">
+            <span class="trial-card-tag">Outdoor</span>
+            <span class="trial-card-tag">Moving User</span>
+            <span class="trial-card-tag">Variable Terrain</span>
+          </div>
+          <div class="trial-card-footer">
+            <div class="trial-card-meta">Range: 50–100 cm</div>
+            <div class="trial-result"><span class="result-dot success"></span><span style="font-size:12px;color:var(--sage)">Successful</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trial 3 -->
+      <div class="trial-card reveal" data-category="night">
+        <div class="trial-video-wrap">
+          <video controls preload="metadata">
+            <source src="trail3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="trial-video-overlay"></div>
+          <div class="trial-num-badge">03</div>
+        </div>
+        <div class="trial-card-body">
+          <div class="trial-card-num">TRIAL · 003</div>
+          <h3>Low-Light Navigation Trial</h3>
+          <p>Night-time evaluation of Vision Path with the LED assist feature active. Testing whether the combination of ultrasonic detection and built-in lighting provides sufficient guidance for confident navigation after dark.</p>
+          <div class="trial-card-tags">
+            <span class="trial-card-tag">Low Light</span>
+            <span class="trial-card-tag">LED Active</span>
+            <span class="trial-card-tag">Night Conditions</span>
+          </div>
+          <div class="trial-card-footer">
+            <div class="trial-card-meta">LED Assist ON</div>
+            <div class="trial-result"><span class="result-dot success"></span><span style="font-size:12px;color:var(--sage)">Successful</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OBSERVATIONS -->
+    <div class="observations reveal">
+      <p class="section-label">Key Findings</p>
+      <h2>Trial Observations</h2>
+      <p>Summary of key findings and performance notes gathered across all three trial sessions.</p>
+      <div class="obs-grid">
+        <div class="obs-card">
+          <div class="obs-icon">⚡</div>
+          <h4>Consistent Alert Timing</h4>
+          <p>Obstacle alerts fired reliably within the 50–100 cm detection window across all environments, giving users adequate reaction time.</p>
+        </div>
+        <div class="obs-card">
+          <div class="obs-icon">🔔</div>
+          <h4>Dual Feedback Effective</h4>
+          <p>The buzzer + vibration combination proved useful — vibration helped in noisy outdoor settings where audio feedback was harder to hear.</p>
+        </div>
+        <div class="obs-card">
+          <div class="obs-icon">💡</div>
+          <h4>LED Assist Valuable</h4>
+          <p>Night trial confirmed that the built-in LED meaningfully improves user confidence in low-visibility environments.</p>
+        </div>
+        <div class="obs-card">
+          <div class="obs-icon">🎯</div>
+          <h4>Zero False Negatives</h4>
+          <p>All solid obstacles within detection range triggered alerts in every trial — no missed detections were recorded across the three sessions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BAND -->
+    <div class="cta-band reveal">
+      <div class="cta-text">
+        <h2>Ready to Experience Vision Path?</h2>
+        <p>Join the growing community of users navigating more confidently and independently with Vision Path's real-time obstacle detection.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="buy.html" class="btn-primary">
+          Order Now
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="index.html" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">Vision Path</div>
+  <p>Designed & Built by Sai Nydhana &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; <a href="mailto:nydhan.sai@amtz.in" style="color:var(--amber);text-decoration:none">nydhan.sai@amtz.in</a></p>
+</footer>
+
+<script>
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = `${i * 0.06}s`;
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+reveals.forEach(el => obs.observe(el));
+reveals.forEach(el => {
+  if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+});
+
+// Filter trials
+function filterTrials(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const featured = document.querySelector('.featured-section');
+  const cards = document.querySelectorAll('.trial-card');
+  if (category === 'all') {
+    featured.style.display = 'block';
+    cards.forEach(c => c.style.display = 'block');
+  } else {
+    const featCat = document.querySelector('.featured-card').getAttribute('data-category');
+    featured.style.display = featCat === category ? 'block' : 'none';
+    cards.forEach(c => {
+      c.style.display = c.getAttribute('data-category') === category ? 'block' : 'none';
+    });
+  }
+}
+
+// Nav shadow
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 8px 48px rgba(0,0,0,0.3)' : 'none';
+}, { passive: true });
+</script>
+</body>
+</html>
