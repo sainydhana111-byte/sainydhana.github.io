@@ -4,1025 +4,192 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vision Path | Sai Nydhana</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0d14;
-  --bg2: #0f1320;
-  --bg3: #141928;
-  --gold: #e8b86d;
-  --gold-dim: #b8904a;
-  --gold-glow: rgba(232,184,109,0.12);
-  --teal: #4ecdc4;
-  --teal-dim: #2eada4;
-  --teal-glow: rgba(78,205,196,0.1);
-  --text: #f0f4ff;
-  --text-muted: #8896b0;
-  --border-gold: rgba(232,184,109,0.2);
-  --border-teal: rgba(78,205,196,0.15);
-  --card-bg: rgba(15,20,38,0.9);
-  --shadow: 0 24px 64px rgba(0,0,0,0.5);
+  --bg:        #1c2b20;
+  --bg2:       #233029;
+  --bg3:       #2a3a2f;
+  --bg4:       #324038;
+  --cream:     #f0ead8;
+  --cream-dim: #c8bfa8;
+  --cream-glow:rgba(240,234,216,0.08);
+  --amber:     #d4a853;
+  --amber-dim: #a87d35;
+  --amber-glow:rgba(212,168,83,0.12);
+  --sage:      #8fbc94;
+  --sage-dim:  #6a9970;
+  --sage-glow: rgba(143,188,148,0.1);
+  --text:      #eee8d5;
+  --text-muted:#9aab92;
+  --border-a:  rgba(212,168,83,0.18);
+  --border-s:  rgba(143,188,148,0.15);
+  --card-bg:   rgba(35,48,41,0.92);
+  --shadow:    0 24px 64px rgba(0,0,0,0.4);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
 
-body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999}
 
-/* Noise texture */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 999;
-}
-
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--amber-dim);border-radius:3px}
 
 /* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 56px;
-  background: rgba(10,13,20,0.75);
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(232,184,109,0.06);
-  transition: padding 0.3s;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.nav-logo-img {
-  height: 42px;
-  width: auto;
-  object-fit: contain;
-}
-
-.nav-wordmark {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 0.5px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0; right: 0;
-  height: 1px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { transform: scaleX(1); }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(28,43,32,0.82);backdrop-filter:blur(24px);border-bottom:1px solid rgba(143,188,148,0.08);transition:padding .3s}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo-img{height:40px;width:auto;object-fit:contain}
+.nav-wordmark{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--amber);letter-spacing:.5px}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--amber);transform:scaleX(0);transition:transform .3s}
+.nav-links a:hover{color:var(--amber)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-buy{color:var(--amber)!important;border:1px solid var(--border-a)!important;padding:7px 18px!important;border-radius:6px!important;background:var(--amber-glow)!important}
 
 /* ─── HERO ─── */
-header {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  padding: 140px 24px 100px;
-}
+header{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:140px 24px 100px}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 30% 40%,rgba(143,188,148,0.07) 0%,transparent 60%),radial-gradient(ellipse 70% 60% at 70% 60%,rgba(212,168,83,0.06) 0%,transparent 60%),radial-gradient(ellipse 100% 80% at 50% 100%,rgba(20,32,22,0.8) 0%,transparent 60%);animation:atmospherePulse 9s ease-in-out infinite}
+@keyframes atmospherePulse{0%,100%{opacity:1}50%{opacity:.65}}
+header::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(143,188,148,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(143,188,148,0.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 80% at center,black 30%,transparent 80%)}
+.hero-inner{position:relative;z-index:2;max-width:920px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:32px;animation:fadeUp 1s ease both}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-s);border-radius:100px;padding:7px 22px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);font-family:'DM Mono',monospace;background:var(--sage-glow)}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);animation:pulseDot 2s infinite}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(58px,10vw,112px);font-weight:700;line-height:.95;letter-spacing:-2px;color:var(--cream);animation:fadeUp 1s .15s ease both}
+h1.hero-title .accent{color:var(--amber);font-style:italic;display:block}
+.hero-tagline{margin-top:28px;font-size:17px;color:var(--text-muted);font-weight:300;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.75;animation:fadeUp 1s .3s ease both}
+.hero-tagline strong{color:var(--sage);font-weight:500}
+.hero-cta{margin-top:52px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s .45s ease both}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:linear-gradient(135deg,var(--amber),var(--amber-dim));color:#1c2b20;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.5px;border-radius:8px;transition:all .35s;box-shadow:0 8px 32px rgba(212,168,83,0.28)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(212,168,83,0.42);background:linear-gradient(135deg,#e4bc72,var(--amber))}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:15px 36px;border:1px solid var(--border-s);color:var(--sage);text-decoration:none;font-size:14px;border-radius:8px;transition:all .35s;letter-spacing:.5px;background:rgba(143,188,148,0.05)}
+.btn-outline:hover{border-color:var(--sage);background:var(--sage-glow);transform:translateY(-3px);box-shadow:0 8px 32px rgba(143,188,148,0.15)}
+.hero-stats{margin-top:80px;display:flex;justify-content:center;gap:0;animation:fadeUp 1s .6s ease both;flex-wrap:wrap;border:1px solid var(--border-a);border-radius:16px;background:rgba(212,168,83,0.03);overflow:hidden;max-width:640px;margin-left:auto;margin-right:auto}
+.stat{flex:1;min-width:150px;text-align:center;padding:28px 20px;position:relative}
+.stat+.stat::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:var(--border-a)}
+.stat-num{font-family:'DM Mono',monospace;font-size:30px;color:var(--amber);font-weight:500;line-height:1}
+.stat-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
+.scroll-cue{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text-muted);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-family:'DM Mono',monospace;z-index:2;animation:fadeUp 1s 1s ease both}
+.scroll-track{width:24px;height:40px;border:1px solid var(--border-a);border-radius:12px;position:relative}
+.scroll-thumb{width:4px;height:10px;background:var(--amber);border-radius:2px;position:absolute;top:6px;left:50%;transform:translateX(-50%);animation:scrollThumb 2s ease-in-out infinite}
+@keyframes scrollThumb{0%,100%{top:6px;opacity:1}80%{top:20px;opacity:.2}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-/* Layered background atmosphere */
-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(232,184,109,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(78,205,196,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(14,20,40,0.8) 0%, transparent 60%);
-  animation: atmospherePulse 8s ease-in-out infinite;
-}
-
-@keyframes atmospherePulse {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-/* Subtle geometric grid */
-header::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(232,184,109,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(232,184,109,0.03) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 80%);
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 32px;
-  animation: fadeUp 1s ease both;
-}
-
-.eyebrow-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--border-gold);
-  border-radius: 100px;
-  padding: 7px 20px;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-family: 'JetBrains Mono', monospace;
-  background: rgba(232,184,109,0.05);
-}
-
-.pulse-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--teal);
-  animation: pulseDot 2s infinite;
-}
-
-@keyframes pulseDot {
-  0%,100% { opacity:1; transform:scale(1); }
-  50% { opacity:0.3; transform:scale(0.7); }
-}
-
-h1.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(56px, 10vw, 108px);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -2px;
-  color: #fff;
-  animation: fadeUp 1s 0.15s ease both;
-}
-
-h1.hero-title .accent {
-  color: var(--gold);
-  font-style: italic;
-  display: block;
-}
-
-.hero-tagline {
-  margin-top: 28px;
-  font-size: 17px;
-  color: var(--text-muted);
-  font-weight: 300;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.75;
-  animation: fadeUp 1s 0.3s ease both;
-}
-
-.hero-tagline strong {
-  color: var(--teal);
-  font-weight: 500;
-}
-
-.hero-cta {
-  margin-top: 52px;
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeUp 1s 0.45s ease both;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 36px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
-  color: #0a0d14;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  border-radius: 8px;
-  transition: all 0.35s;
-  box-shadow: 0 8px 32px rgba(232,184,109,0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 48px rgba(232,184,109,0.45);
-  background: linear-gradient(135deg, #f5cc88, var(--gold));
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 36px;
-  border: 1px solid var(--border-teal);
-  color: var(--teal);
-  text-decoration: none;
-  font-size: 14px;
-  border-radius: 8px;
-  transition: all 0.35s;
-  letter-spacing: 0.5px;
-  background: rgba(78,205,196,0.04);
-}
-
-.btn-outline:hover {
-  border-color: var(--teal);
-  background: var(--teal-glow);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(78,205,196,0.15);
-}
-
-/* Stats */
-.hero-stats {
-  margin-top: 80px;
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  animation: fadeUp 1s 0.6s ease both;
-  flex-wrap: wrap;
-  border: 1px solid var(--border-gold);
-  border-radius: 16px;
-  background: rgba(232,184,109,0.03);
-  overflow: hidden;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.stat {
-  flex: 1;
-  min-width: 150px;
-  text-align: center;
-  padding: 28px 20px;
-  position: relative;
-}
-
-.stat + .stat::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 20%; bottom: 20%;
-  width: 1px;
-  background: var(--border-gold);
-}
-
-.stat-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 30px;
-  color: var(--gold);
-  font-weight: 700;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 6px;
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-muted);
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
-  z-index: 2;
-  animation: fadeUp 1s 1s ease both;
-}
-
-.scroll-track {
-  width: 24px; height: 40px;
-  border: 1px solid var(--border-gold);
-  border-radius: 12px;
-  position: relative;
-}
-
-.scroll-thumb {
-  width: 4px; height: 10px;
-  background: var(--gold);
-  border-radius: 2px;
-  position: absolute;
-  top: 6px; left: 50%;
-  transform: translateX(-50%);
-  animation: scrollThumb 2s ease-in-out infinite;
-}
-
-@keyframes scrollThumb {
-  0%,100% { top: 6px; opacity: 1; }
-  80% { top: 20px; opacity: 0.2; }
-}
-
-/* ─── SECTION BASE ─── */
-.section {
-  padding: 120px 24px;
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-label::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--teal);
-}
-
-.section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 5vw, 50px);
-  font-weight: 700;
-  line-height: 1.15;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.section p {
-  color: var(--text-muted);
-  line-height: 1.8;
-  font-size: 15.5px;
-  max-width: 680px;
-}
-
-/* ─── REVEAL ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ─── DIVIDER ─── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-/* ─── BAND ─── */
-.band {
-  background: var(--bg2);
-  border-top: 1px solid rgba(232,184,109,0.07);
-  border-bottom: 1px solid rgba(232,184,109,0.07);
-}
+/* ─── SECTIONS ─── */
+.section{padding:120px 24px;max-width:1120px;margin:0 auto}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';width:24px;height:1px;background:var(--sage)}
+.section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:600;line-height:1.15;color:var(--cream);margin-bottom:20px}
+.section p{color:var(--text-muted);line-height:1.8;font-size:15.5px;max-width:680px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-a),transparent);max-width:1120px;margin:0 auto}
+.band{background:var(--bg2);border-top:1px solid rgba(143,188,148,0.06);border-bottom:1px solid rgba(143,188,148,0.06)}
 
 /* ─── ABOUT ─── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.about-photo-frame {
-  position: relative;
-}
-
-/* Gold accent corners */
-.about-photo-frame::before, .about-photo-frame::after {
-  content: '';
-  position: absolute;
-  width: 56px; height: 56px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.about-photo-frame::before {
-  top: -10px; right: -10px;
-  border-top: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
-  border-radius: 0 12px 0 0;
-}
-
-.about-photo-frame::after {
-  bottom: -10px; left: -10px;
-  border-bottom: 2px solid var(--teal-dim);
-  border-left: 2px solid var(--teal-dim);
-  border-radius: 0 0 0 12px;
-}
-
-.about-photo {
-  width: 100%;
-  border-radius: 14px;
-  object-fit: cover;
-  object-position: center top; /* Show head/face, not feet */
-  aspect-ratio: 4/5;
-  max-height: 500px;
-  display: block;
-  border: 1px solid var(--border-gold);
-}
-
-.about-photo-placeholder {
-  width: 100%;
-  aspect-ratio: 4/5;
-  max-height: 500px;
-  border-radius: 14px;
-  background: var(--bg3);
-  border: 1px solid var(--border-gold);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  color: var(--text-muted);
-  font-size: 13px;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-photo-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(232,184,109,0.06), transparent 70%);
-}
-
-.about-content .section-label { margin-top: 4px; }
-
-.about-bio {
-  margin-top: 20px;
-}
-
-.about-bio p {
-  max-width: 100%;
-  margin-bottom: 14px;
-}
-
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 28px;
-}
-
-.tag {
-  padding: 6px 16px;
-  border: 1px solid var(--border-teal);
-  border-radius: 100px;
-  font-size: 12px;
-  color: var(--teal);
-  background: var(--teal-glow);
-  letter-spacing: 0.5px;
-}
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.about-photo-frame{position:relative}
+.about-photo-frame::before,.about-photo-frame::after{content:'';position:absolute;width:56px;height:56px;z-index:2;pointer-events:none}
+.about-photo-frame::before{top:-10px;right:-10px;border-top:2px solid var(--amber);border-right:2px solid var(--amber);border-radius:0 12px 0 0}
+.about-photo-frame::after{bottom:-10px;left:-10px;border-bottom:2px solid var(--sage-dim);border-left:2px solid var(--sage-dim);border-radius:0 0 0 12px}
+.about-photo{width:100%;border-radius:14px;object-fit:cover;object-position:center top;aspect-ratio:4/5;max-height:500px;display:block;border:1px solid var(--border-a)}
+.about-photo-placeholder{width:100%;aspect-ratio:4/5;max-height:500px;border-radius:14px;background:var(--bg3);border:1px solid var(--border-a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--text-muted);font-size:13px;position:relative;overflow:hidden}
+.about-bio{margin-top:20px}
+.about-bio p{max-width:100%;margin-bottom:14px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{padding:6px 16px;border:1px solid var(--border-s);border-radius:100px;font-size:12px;color:var(--sage);background:var(--sage-glow);letter-spacing:.5px}
 
 /* ─── CHALLENGE ─── */
-.challenge-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.challenge-intro p { margin-bottom: 14px; }
-
-.pain-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 8px;
-}
-
-.pain-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
-  background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 12px;
-  font-size: 14.5px;
-  color: var(--text-muted);
-  transition: border-color 0.3s, color 0.3s;
-}
-
-.pain-list li:hover {
-  border-color: rgba(232,184,109,0.2);
-  color: var(--text);
-}
-
-.pain-icon {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  background: rgba(232,184,109,0.08);
-  border: 1px solid rgba(232,184,109,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  flex-shrink: 0;
-}
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.challenge-intro p{margin-bottom:14px}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.pain-list li{display:flex;align-items:flex-start;gap:16px;padding:20px;background:var(--bg3);border:1px solid rgba(255,255,255,0.04);border-radius:12px;font-size:14.5px;color:var(--text-muted);transition:border-color .3s,color .3s}
+.pain-list li:hover{border-color:rgba(212,168,83,0.2);color:var(--text)}
+.pain-icon{width:32px;height:32px;border-radius:8px;background:rgba(212,168,83,0.08);border:1px solid rgba(212,168,83,0.15);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 
 /* ─── SOLUTION ─── */
-.solution-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
+.solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.device-visual{position:relative}
+.device-img{width:100%;border-radius:16px;object-fit:cover;border:1px solid var(--border-a);box-shadow:0 0 80px rgba(212,168,83,0.07),var(--shadow);display:block}
+.device-placeholder{width:100%;aspect-ratio:1;border-radius:16px;background:var(--bg3);border:1px solid var(--border-a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--text-muted);font-size:13px;box-shadow:0 0 80px rgba(212,168,83,0.05)}
+.device-visual::before{content:'LIVE DEMO';position:absolute;top:20px;right:20px;background:rgba(143,188,148,0.12);border:1px solid var(--border-s);border-radius:100px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--sage);z-index:2}
 
-.device-visual {
-  position: relative;
-}
+/* ─── CARDS ─── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-top:56px}
+.card{background:var(--card-bg);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:34px;transition:border-color .35s,transform .35s,box-shadow .35s;position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(212,168,83,0.04),transparent 70%);pointer-events:none;opacity:0;transition:opacity .35s}
+.card:hover{border-color:var(--border-a);transform:translateY(-5px);box-shadow:0 20px 60px rgba(212,168,83,0.07)}
+.card:hover::after{opacity:1}
+.card-icon{width:48px;height:48px;border-radius:12px;background:var(--amber-glow);border:1px solid var(--border-a);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px}
+.card h3{font-size:16px;font-weight:600;color:var(--cream);margin-bottom:10px;font-family:'Cormorant Garamond',serif;font-size:18px}
+.card p{font-size:13.5px;color:var(--text-muted);line-height:1.7;max-width:100%}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:48px}
+.tech-item{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--bg3);border:1px solid rgba(255,255,255,0.04);border-radius:10px;font-size:14px;color:var(--text-muted);transition:border-color .3s,color .3s}
+.tech-item:hover{border-color:var(--border-a);color:var(--text)}
+.tech-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0;box-shadow:0 0 10px rgba(212,168,83,0.5)}
 
-.device-img {
-  width: 100%;
-  border-radius: 16px;
-  object-fit: cover;
-  border: 1px solid var(--border-gold);
-  box-shadow: 0 0 80px rgba(232,184,109,0.08), var(--shadow);
-  display: block;
-}
-
-.device-placeholder {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 16px;
-  background: var(--bg3);
-  border: 1px solid var(--border-gold);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  color: var(--text-muted);
-  font-size: 13px;
-  box-shadow: 0 0 80px rgba(232,184,109,0.06);
-}
-
-/* Glow badge on device image */
-.device-visual::before {
-  content: 'LIVE DEMO';
-  position: absolute;
-  top: 20px; right: 20px;
-  background: rgba(78,205,196,0.12);
-  border: 1px solid var(--border-teal);
-  border-radius: 100px;
-  padding: 5px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--teal);
-  z-index: 2;
-}
-
-/* ─── FEATURES CARDS ─── */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 20px;
-  margin-top: 56px;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 34px;
-  transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 0% 0%, rgba(232,184,109,0.04), transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.35s;
-}
-
-.card:hover {
-  border-color: var(--border-gold);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 60px rgba(232,184,109,0.07);
-}
-
-.card:hover::after { opacity: 1; }
-
-.card-icon {
-  width: 48px; height: 48px;
-  border-radius: 12px;
-  background: var(--gold-glow);
-  border: 1px solid var(--border-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  margin-bottom: 22px;
-}
-
-.card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 10px;
-  font-family: 'Playfair Display', serif;
-}
-
-.card p {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 100%;
-}
-
-/* ─── TECH STACK ─── */
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 14px;
-  margin-top: 48px;
-}
-
-.tech-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 20px;
-  background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 10px;
-  font-size: 14px;
-  color: var(--text-muted);
-  transition: border-color 0.3s, color 0.3s;
-}
-
-.tech-item:hover {
-  border-color: var(--border-gold);
-  color: var(--text);
-}
-
-.tech-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(232,184,109,0.6);
-}
-
-/* ─── HOW IT WORKS ─── */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin-top: 56px;
-  position: relative;
-}
-
-.step-card {
-  background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 32px 28px;
-  position: relative;
-  transition: border-color 0.3s, transform 0.3s;
-  overflow: hidden;
-}
-
-.step-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--teal));
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.step-card:hover {
-  border-color: var(--border-gold);
-  transform: translateY(-4px);
-}
-
-.step-card:hover::before { opacity: 1; }
-
-.step-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 42px;
-  font-weight: 700;
-  color: rgba(232,184,109,0.12);
-  line-height: 1;
-  margin-bottom: 20px;
-  letter-spacing: -2px;
-}
-
-.step-card h3 {
-  font-size: 17px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.step-card p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 100%;
-}
+/* ─── STEPS ─── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:56px;position:relative}
+.step-card{background:var(--bg3);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:32px 28px;position:relative;transition:border-color .3s,transform .3s;overflow:hidden}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),var(--sage));opacity:0;transition:opacity .3s}
+.step-card:hover{border-color:var(--border-a);transform:translateY(-4px)}
+.step-card:hover::before{opacity:1}
+.step-num{font-family:'DM Mono',monospace;font-size:42px;font-weight:500;color:rgba(212,168,83,0.12);line-height:1;margin-bottom:20px;letter-spacing:-2px}
+.step-card h3{font-size:17px;font-weight:600;color:var(--cream);margin-bottom:10px}
+.step-card p{font-size:14px;color:var(--text-muted);line-height:1.7;max-width:100%}
 
 /* ─── VIDEO ─── */
-.video-wrap {
-  margin-top: 56px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--border-gold);
-  box-shadow: 0 0 100px rgba(232,184,109,0.08), var(--shadow);
-  position: relative;
-}
+.video-wrap{margin-top:56px;border-radius:18px;overflow:hidden;border:1px solid var(--border-a);box-shadow:0 0 100px rgba(212,168,83,0.07),var(--shadow);position:relative}
+.video-wrap video,.video-wrap iframe{width:100%;display:block;background:#0d1710;border:none}
 
-.video-wrap video, .video-wrap iframe {
-  width: 100%;
-  display: block;
-  background: #000;
-  border: none;
-  min-height: 400px;
-}
+/* ─── TWO VIDEOS SIDE BY SIDE ─── */
+.video-duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:56px}
+.video-block h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream);margin-bottom:14px}
+.video-block p{font-size:13.5px;color:var(--text-muted);margin-bottom:16px;max-width:100%}
+.video-wrap-sm{border-radius:14px;overflow:hidden;border:1px solid var(--border-a);box-shadow:0 0 60px rgba(212,168,83,0.05);background:#0d1710}
+.video-wrap-sm video{width:100%;display:block;min-height:200px}
 
 /* ─── IMPACT ─── */
-.impact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.impact-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 28px;
-}
-
-.impact-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  font-size: 14.5px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: color 0.3s;
-}
-
-.impact-list li:last-child { border-bottom: none; }
-.impact-list li:hover { color: var(--text); }
-
-.impact-arrow {
-  color: var(--teal);
-  flex-shrink: 0;
-  font-size: 16px;
-  margin-top: 1px;
-}
-
-/* ─── FUTURE ─── */
-.future-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.future-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 22px;
-  background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 12px;
-  font-size: 14px;
-  color: var(--text-muted);
-  transition: all 0.3s;
-}
-
-.future-item:hover {
-  border-color: var(--border-gold);
-  color: var(--text);
-  transform: translateX(4px);
-}
-
-.future-icon {
-  width: 36px; height: 36px;
-  border-radius: 9px;
-  background: var(--gold-glow);
-  border: 1px solid var(--border-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  flex-shrink: 0;
-}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.impact-list{list-style:none;display:flex;flex-direction:column;gap:0;margin-top:28px}
+.impact-list li{display:flex;align-items:flex-start;gap:16px;font-size:14.5px;color:var(--text-muted);line-height:1.65;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.05);transition:color .3s}
+.impact-list li:last-child{border-bottom:none}
+.impact-list li:hover{color:var(--text)}
+.impact-arrow{color:var(--sage);flex-shrink:0;font-size:16px;margin-top:1px}
+.future-list{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.future-item{display:flex;align-items:center;gap:14px;padding:18px 22px;background:var(--bg3);border:1px solid rgba(255,255,255,0.04);border-radius:12px;font-size:14px;color:var(--text-muted);transition:all .3s}
+.future-item:hover{border-color:var(--border-a);color:var(--text);transform:translateX(4px)}
+.future-icon{width:36px;height:36px;border-radius:9px;background:var(--amber-glow);border:1px solid var(--border-a);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 
 /* ─── CONTACT ─── */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.contact-cards { display: flex; flex-direction: column; gap: 14px; }
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 24px;
-  background: var(--bg3);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 14px;
-  text-decoration: none;
-  color: var(--text);
-  transition: all 0.35s;
-}
-
-.contact-card:hover {
-  border-color: var(--border-gold);
-  transform: translateX(6px);
-  box-shadow: 0 8px 32px rgba(232,184,109,0.07);
-}
-
-.contact-icon {
-  width: 48px; height: 48px;
-  border-radius: 12px;
-  background: var(--gold-glow);
-  border: 1px solid var(--border-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.contact-info small {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 5px;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.contact-info span {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-cards{display:flex;flex-direction:column;gap:14px}
+.contact-card{display:flex;align-items:center;gap:18px;padding:24px;background:var(--bg3);border:1px solid rgba(255,255,255,0.05);border-radius:14px;text-decoration:none;color:var(--text);transition:all .35s}
+.contact-card:hover{border-color:var(--border-a);transform:translateX(6px);box-shadow:0 8px 32px rgba(212,168,83,0.07)}
+.contact-icon{width:48px;height:48px;border-radius:12px;background:var(--amber-glow);border:1px solid var(--border-a);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.contact-info small{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;font-family:'DM Mono',monospace}
+.contact-info span{font-size:15px;font-weight:500;color:var(--text)}
 
 /* ─── FOOTER ─── */
-footer {
-  text-align: center;
-  padding: 56px 24px;
-  border-top: 1px solid rgba(232,184,109,0.07);
-  position: relative;
-}
+footer{text-align:center;padding:56px 24px;border-top:1px solid rgba(212,168,83,0.07);position:relative}
+footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--amber);font-style:italic;margin-bottom:12px;letter-spacing:1px}
+footer p{font-size:13px;color:var(--text-muted);letter-spacing:.5px}
 
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.footer-brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--gold);
-  font-style: italic;
-  margin-bottom: 12px;
-  letter-spacing: 1px;
-}
-
-footer p {
-  font-size: 13px;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 860px) {
-  nav { padding: 16px 22px; }
-  .nav-links { display: none; }
-
-  .about-grid,
-  .challenge-grid,
-  .solution-grid,
-  .impact-grid,
-  .contact-grid { grid-template-columns: 1fr; gap: 44px; }
-
-  .section { padding: 80px 20px; }
-  .hero-stats { gap: 0; }
-  .steps { grid-template-columns: 1fr 1fr; }
-  .about-photo-frame::before, .about-photo-frame::after { display: none; }
-}
-
-@media (max-width: 560px) {
-  .steps { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; }
-  .stat + .stat::before { display: none; }
-  .stat { padding: 18px 20px; }
-}
+@media(max-width:860px){nav{padding:16px 20px}.nav-links{display:none}.about-grid,.challenge-grid,.solution-grid,.impact-grid,.contact-grid,.video-duo{grid-template-columns:1fr;gap:44px}.section{padding:80px 20px}.steps{grid-template-columns:1fr 1fr}.about-photo-frame::before,.about-photo-frame::after{display:none}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}.hero-stats{flex-direction:column}.stat+.stat::before{display:none}.stat{padding:18px 20px}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-brand">
-    <img src="LOGO_revised.jpg" class="nav-logo-img"
-      onerror="this.style.display='none'"
-      alt="Vision Path Logo">
+    <img src="LOGO_revised.jpg" class="nav-logo-img" onerror="this.style.display='none'" alt="Vision Path Logo">
     <span class="nav-wordmark">Vision Path</span>
   </div>
   <ul class="nav-links">
@@ -1031,12 +198,12 @@ footer p {
     <li><a href="#solution">Solution</a></li>
     <li><a href="#works">How It Works</a></li>
     <li><a href="#impact">Impact</a></li>
+    <li><a href="trails.html">Trials</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="buy.html" style="color:var(--gold);border:1px solid var(--border-gold);padding:7px 18px;border-radius:6px;background:var(--gold-glow);">Buy Now</a></li>
+    <li><a href="buy.html" class="nav-buy">Buy Now</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <header>
   <div class="hero-inner">
     <div class="hero-eyebrow">
@@ -1057,29 +224,16 @@ footer p {
         Explore the Device
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#works" class="btn-outline">
-        How It Works
-      </a>
+      <a href="#works" class="btn-outline">How It Works</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">100cm</div>
-        <div class="stat-label">Detection Range</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">2×</div>
-        <div class="stat-label">Feedback Modes</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">∞</div>
-        <div class="stat-label">Lives Impacted</div>
-      </div>
+      <div class="stat"><div class="stat-num">100cm</div><div class="stat-label">Detection Range</div></div>
+      <div class="stat"><div class="stat-num">2×</div><div class="stat-label">Feedback Modes</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Lives Impacted</div></div>
     </div>
   </div>
   <div class="scroll-cue">
-    <div class="scroll-track">
-      <div class="scroll-thumb"></div>
-    </div>
+    <div class="scroll-track"><div class="scroll-thumb"></div></div>
     scroll
   </div>
 </header>
@@ -1091,19 +245,15 @@ footer p {
   <div class="about-grid">
     <div class="about-photo-frame">
       <img src="me.jpeg" class="about-photo"
-        onerror="this.outerHTML='<div class=\'about-photo-placeholder\'><svg width=\'64\' height=\'64\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#8896b0\' stroke-width=\'1.5\' opacity=\'0.4\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg><span style=\'font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;color:#8896b0\'>Your Photo Here</span></div>'"
+        onerror="this.outerHTML='<div class=\'about-photo-placeholder\'><svg width=\'64\' height=\'64\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#9aab92\' stroke-width=\'1.5\' opacity=\'0.4\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg><span style=\'font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.5;color:#9aab92\'>Your Photo Here</span></div>'"
         alt="Sai Nydhana">
     </div>
     <div class="about-content">
       <p class="section-label">About the Innovator</p>
       <h2>Sai Nydhana</h2>
       <div class="about-bio">
-        <p>
-          I am an innovator and technology enthusiast focused on building impactful solutions for real-world problems. My work is driven by a strong passion to improve accessibility and independence for visually impaired individuals.
-        </p>
-        <p>
-          I specialize in embedded systems, IoT, and assistive technology development using platforms like Arduino and ESP-based systems — creating affordable, practical solutions that can be widely adopted across society.
-        </p>
+        <p>I am an innovator and technology enthusiast focused on building impactful solutions for real-world problems. My work is driven by a strong passion to improve accessibility and independence for visually impaired individuals.</p>
+        <p>I specialize in embedded systems, IoT, and assistive technology development using platforms like Arduino and ESP-based systems — creating affordable, practical solutions that can be widely adopted across society.</p>
       </div>
       <div class="about-tags">
         <span class="tag">Embedded Systems</span>
@@ -1125,30 +275,14 @@ footer p {
       <div class="challenge-intro">
         <p class="section-label">The Problem</p>
         <h2>Navigating a World Built for Sight</h2>
-        <p>
-          Visually impaired individuals face significant challenges navigating both indoor and outdoor environments. Traditional white canes only provide feedback after physical contact — which can lead to accidents and injuries.
-        </p>
-        <p style="margin-top:14px">
-          Existing smart canes attempt to solve this, but often suffer from critical limitations that prevent widespread adoption:
-        </p>
+        <p>Visually impaired individuals face significant challenges navigating both indoor and outdoor environments. Traditional white canes only provide feedback after physical contact — which can lead to accidents and injuries.</p>
+        <p style="margin-top:14px">Existing smart canes attempt to solve this, but often suffer from critical limitations that prevent widespread adoption:</p>
       </div>
-      <ul class="pain-list" style="padding-top: 68px;">
-        <li>
-          <div class="pain-icon">⏱</div>
-          Delayed obstacle detection — feedback arrives too late to react safely
-        </li>
-        <li>
-          <div class="pain-icon">💸</div>
-          High cost makes devices inaccessible to most users globally
-        </li>
-        <li>
-          <div class="pain-icon">📦</div>
-          Bulky and inconvenient designs reduce everyday adoption
-        </li>
-        <li>
-          <div class="pain-icon">🔗</div>
-          Constant dependence on cane usage is restricting and inconvenient
-        </li>
+      <ul class="pain-list" style="padding-top:68px">
+        <li><div class="pain-icon">⏱</div>Delayed obstacle detection — feedback arrives too late to react safely</li>
+        <li><div class="pain-icon">💸</div>High cost makes devices inaccessible to most users globally</li>
+        <li><div class="pain-icon">📦</div>Bulky and inconvenient designs reduce everyday adoption</li>
+        <li><div class="pain-icon">🔗</div>Constant dependence on cane usage is restricting and inconvenient</li>
       </ul>
     </div>
   </section>
@@ -1160,16 +294,12 @@ footer p {
     <div>
       <p class="section-label">The Solution</p>
       <h2>Introducing Vision Path</h2>
-      <p style="margin-bottom:16px">
-        Vision Path is a compact, torch-like handheld device that provides real-time obstacle detection using ultrasonic sensing technology. Simple, effective, and accessible for all age groups.
-      </p>
-      <p>
-        Unlike traditional solutions, it requires no smartphone, no internet, and no continuous cane usage — just point, and navigate with complete confidence.
-      </p>
+      <p style="margin-bottom:16px">Vision Path is a compact, torch-like handheld device that provides real-time obstacle detection using ultrasonic sensing technology. Simple, effective, and accessible for all age groups.</p>
+      <p>Unlike traditional solutions, it requires no smartphone, no internet, and no continuous cane usage — just point, and navigate with complete confidence.</p>
     </div>
     <div class="device-visual">
       <img src="obstacle_detection.png" class="device-img"
-        onerror="this.outerHTML='<div class=\'device-placeholder\'><svg width=\'64\' height=\'64\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#e8b86d\' stroke-width=\'1\' opacity=\'0.4\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'3\'/><circle cx=\'12\' cy=\'12\' r=\'4\'/><path d=\'M12 2v2M12 20v2M2 12h2M20 12h2\'/></svg><span style=\'font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:0.5;color:#8896b0\'>Device Image</span></div>'"
+        onerror="this.outerHTML='<div class=\'device-placeholder\'><svg width=\'64\' height=\'64\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#d4a853\' stroke-width=\'1\' opacity=\'0.4\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'3\'/><circle cx=\'12\' cy=\'12\' r=\'4\'/><path d=\'M12 2v2M12 20v2M2 12h2M20 12h2\'/></svg><span style=\'font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.5;color:#9aab92\'>Device Image</span></div>'"
         alt="Vision Path Device">
     </div>
   </div>
@@ -1181,36 +311,12 @@ footer p {
     <p class="section-label">Features & Technology</p>
     <h2>Built for Real Life</h2>
     <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">📡</div>
-        <h3>Proactive Ultrasonic Detection</h3>
-        <p>HC-SR04 sensor detects obstacles between 50 cm and 100 cm — giving users ample advance time to navigate safely around hazards.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔔</div>
-        <h3>Dual Feedback System</h3>
-        <p>Audio buzzer alerts and vibration motor work together — providing reliable alerts in both noisy environments and quiet spaces.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">💡</div>
-        <h3>LED Night Assist</h3>
-        <p>Built-in LED lighting enables confident navigation in low-light and nighttime conditions, enhancing safety outdoors.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔋</div>
-        <h3>Rechargeable Power</h3>
-        <p>TP4056 charging module with boost converter ensures safe, reliable, and portable power wherever you go.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🤏</div>
-        <h3>Pocket-Sized Design</h3>
-        <p>Compact handheld torch form factor — lightweight, comfortable to grip, and easy to carry every day without hassle.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">💰</div>
-        <h3>Affordable & Scalable</h3>
-        <p>Engineered with cost-effectiveness at its core, enabling widespread adoption across communities worldwide.</p>
-      </div>
+      <div class="card"><div class="card-icon">📡</div><h3>Proactive Ultrasonic Detection</h3><p>HC-SR04 sensor detects obstacles between 50 cm and 100 cm — giving users ample advance time to navigate safely around hazards.</p></div>
+      <div class="card"><div class="card-icon">🔔</div><h3>Dual Feedback System</h3><p>Audio buzzer alerts and vibration motor work together — providing reliable alerts in both noisy environments and quiet spaces.</p></div>
+      <div class="card"><div class="card-icon">💡</div><h3>LED Night Assist</h3><p>Built-in LED lighting enables confident navigation in low-light and nighttime conditions, enhancing safety outdoors.</p></div>
+      <div class="card"><div class="card-icon">🔋</div><h3>Rechargeable Power</h3><p>TP4056 charging module with boost converter ensures safe, reliable, and portable power wherever you go.</p></div>
+      <div class="card"><div class="card-icon">🤏</div><h3>Pocket-Sized Design</h3><p>Compact handheld torch form factor — lightweight, comfortable to grip, and easy to carry every day without hassle.</p></div>
+      <div class="card"><div class="card-icon">💰</div><h3>Affordable & Scalable</h3><p>Engineered with cost-effectiveness at its core, enabling widespread adoption across communities worldwide.</p></div>
     </div>
     <div class="tech-grid">
       <div class="tech-item"><span class="tech-dot"></span> Arduino Nano</div>
@@ -1229,41 +335,46 @@ footer p {
   <h2>How It Works</h2>
   <p>Vision Path transforms ultrasonic signals into clear, intuitive feedback — in real time, every time.</p>
   <div class="steps">
-    <div class="step-card reveal">
-      <div class="step-num">01</div>
-      <h3>Emit & Detect</h3>
-      <p>The HC-SR04 sensor emits ultrasonic pulses and measures the time for the echo to return from nearby obstacles.</p>
-    </div>
-    <div class="step-card reveal">
-      <div class="step-num">02</div>
-      <h3>Calculate Distance</h3>
-      <p>The Arduino Nano processes the echo duration to calculate precise distance, triggering alerts when an object enters the 50–100 cm safe zone.</p>
-    </div>
-    <div class="step-card reveal">
-      <div class="step-num">03</div>
-      <h3>Dual Alert</h3>
-      <p>Both the buzzer and vibration motor activate simultaneously — ensuring clear feedback regardless of the surrounding environment.</p>
-    </div>
-    <div class="step-card reveal">
-      <div class="step-num">04</div>
-      <h3>Navigate Safely</h3>
-      <p>With advance warning, the user steers clear of obstacles — moving confidently through any space, indoors or outdoors.</p>
-    </div>
+    <div class="step-card reveal"><div class="step-num">01</div><h3>Emit & Detect</h3><p>The HC-SR04 sensor emits ultrasonic pulses and measures the time for the echo to return from nearby obstacles.</p></div>
+    <div class="step-card reveal"><div class="step-num">02</div><h3>Calculate Distance</h3><p>The Arduino Nano processes the echo duration to calculate precise distance, triggering alerts when an object enters the 50–100 cm safe zone.</p></div>
+    <div class="step-card reveal"><div class="step-num">03</div><h3>Dual Alert</h3><p>Both the buzzer and vibration motor activate simultaneously — ensuring clear feedback regardless of the surrounding environment.</p></div>
+    <div class="step-card reveal"><div class="step-num">04</div><h3>Navigate Safely</h3><p>With advance warning, the user steers clear of obstacles — moving confidently through any space, indoors or outdoors.</p></div>
   </div>
 </section>
 
-<!-- VIDEO -->
+<!-- VIDEO DEMOS -->
 <div class="band">
   <section class="section reveal">
     <p class="section-label">Project Showcase</p>
     <h2>See It in Action</h2>
-    <p>Watch Vision Path demonstrate real-time obstacle detection and user feedback in action.</p>
-    <div class="video-wrap">
-      <video controls preload="metadata">
-        <source src="about.mp4" type="video/mp4">
-        <source src="demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <p>Two perspectives of Vision Path — the device up close, and real-world use by a person navigating independently.</p>
+    <div class="video-duo">
+      <div class="video-block">
+        <h3>About the Device</h3>
+        <p>A close-up walkthrough of Vision Path's hardware, components, and how the system is assembled.</p>
+        <div class="video-wrap-sm">
+          <video controls preload="metadata">
+            <source src="about.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="video-block">
+        <h3>Live Demo</h3>
+        <p>Watch a person using Vision Path in a real environment — detecting obstacles and navigating confidently.</p>
+        <div class="video-wrap-sm">
+          <video controls preload="metadata">
+            <source src="demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="trails.html" class="btn-outline" style="display:inline-flex">
+        View All Trial Videos
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:8px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 </div>
@@ -1289,26 +400,11 @@ footer p {
       <h2>Future Development</h2>
       <p>The roadmap for Vision Path includes powerful upgrades to make it even smarter and more versatile.</p>
       <div class="future-list">
-        <div class="future-item">
-          <div class="future-icon">📱</div>
-          Mobile app integration for navigation history & analytics
-        </div>
-        <div class="future-item">
-          <div class="future-icon">🗺️</div>
-          GPS-based outdoor navigation assistance
-        </div>
-        <div class="future-item">
-          <div class="future-icon">🔊</div>
-          Voice alert system for contextual awareness
-        </div>
-        <div class="future-item">
-          <div class="future-icon">📷</div>
-          Camera-based object detection via ESP32-CAM
-        </div>
-        <div class="future-item">
-          <div class="future-icon">💧</div>
-          Waterproof enclosure for all-weather use
-        </div>
+        <div class="future-item"><div class="future-icon">📱</div>Mobile app integration for navigation history & analytics</div>
+        <div class="future-item"><div class="future-icon">🗺️</div>GPS-based outdoor navigation assistance</div>
+        <div class="future-item"><div class="future-icon">🔊</div>Voice alert system for contextual awareness</div>
+        <div class="future-item"><div class="future-icon">📷</div>Camera-based object detection via ESP32-CAM</div>
+        <div class="future-item"><div class="future-icon">💧</div>Waterproof enclosure for all-weather use</div>
       </div>
     </div>
   </div>
@@ -1321,38 +417,28 @@ footer p {
       <div>
         <p class="section-label">Get In Touch</p>
         <h2>Let's Connect</h2>
-        <p>
-          Interested in Vision Path, collaboration opportunities, or learning more about assistive technology innovation? Reach out directly — I'd love to hear from you.
-        </p>
+        <p>Interested in Vision Path, collaboration opportunities, or learning more about assistive technology innovation? Reach out directly — I'd love to hear from you.</p>
       </div>
       <div class="contact-cards">
         <a href="mailto:nydhan.sai@amtz.in" class="contact-card">
           <div class="contact-icon">✉️</div>
-          <div class="contact-info">
-            <small>Email</small>
-            <span>nydhan.sai@amtz.in</span>
-          </div>
+          <div class="contact-info"><small>Email</small><span>nydhan.sai@amtz.in</span></div>
         </a>
         <a href="tel:8790063257" class="contact-card">
           <div class="contact-icon">📞</div>
-          <div class="contact-info">
-            <small>Phone</small>
-            <span>+91 87900 63257</span>
-          </div>
+          <div class="contact-info"><small>Phone</small><span>+91 87900 63257</span></div>
         </a>
       </div>
     </div>
   </section>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">Vision Path</div>
   <p>Designed & Built by Sai Nydhana &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Powered by Innovation</p>
 </footer>
 
 <script>
-// Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -1364,25 +450,15 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 reveals.forEach(el => observer.observe(el));
 
-// Nav active link
 const sections = document.querySelectorAll('[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-const updateNav = () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 140) current = s.id;
-  });
-  navLinks.forEach(a => {
-    const isActive = a.getAttribute('href') === '#' + current;
-    a.style.color = isActive ? 'var(--gold)' : '';
-  });
-};
-window.addEventListener('scroll', updateNav, { passive: true });
-
-// Nav shadow on scroll
 window.addEventListener('scroll', () => {
-  document.querySelector('nav').style.boxShadow =
-    window.scrollY > 40 ? '0 8px 48px rgba(0,0,0,0.4)' : 'none';
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--amber)' : '';
+  });
+  document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 8px 48px rgba(0,0,0,0.35)' : 'none';
 }, { passive: true });
 </script>
 </body>
