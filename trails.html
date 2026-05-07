@@ -57,11 +57,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-meta{display:flex;gap:32px;justify-content:center;margin-top:36px;animation:fadeUp .8s .3s ease both;flex-wrap:wrap}
 .hero-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
 .hero-meta-item .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;box-shadow:0 0 8px rgba(212,168,83,0.5)}
-
-/* Institution callout in hero */
 .institution-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(212,168,83,0.07);border:1px solid var(--border-a);border-radius:12px;padding:12px 22px;margin-top:28px;font-size:13.5px;color:var(--cream-dim);animation:fadeUp .8s .4s ease both}
 .institution-badge strong{color:var(--amber)}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ─── LOCATION CONTEXT BAND ─── */
@@ -84,64 +81,80 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .section-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:20px;display:flex;align-items:center;gap:10px}
 .section-label::before{content:'';width:24px;height:1px;background:var(--sage)}
 
+/* ─── IAPB PUBLICATION BANNER ─── */
+.iapb-banner{background:linear-gradient(135deg,rgba(212,168,83,0.08) 0%,rgba(143,188,148,0.05) 100%);border:1px solid var(--border-a);border-radius:20px;padding:0;overflow:hidden;margin-bottom:64px;position:relative}
+.iapb-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--sage),var(--amber));opacity:.7}
+.iapb-banner-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px;padding:36px 40px}
+.iapb-logo-col{display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0}
+.iapb-globe{width:64px;height:64px;border-radius:16px;background:rgba(212,168,83,0.1);border:1px solid var(--border-a);display:flex;align-items:center;justify-content:center;font-size:28px}
+.iapb-org-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);text-align:center;max-width:72px;line-height:1.4}
+.iapb-divider{width:1px;height:80px;background:var(--border-a);flex-shrink:0}
+.iapb-content{}
+.iapb-eyebrow{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.iapb-pub-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);box-shadow:0 0 6px rgba(143,188,148,0.6)}
+.iapb-content h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--cream);margin-bottom:8px;line-height:1.3}
+.iapb-content p{font-size:13.5px;color:var(--text-muted);line-height:1.65;max-width:560px}
+.iapb-meta{display:flex;gap:20px;margin-top:14px;flex-wrap:wrap}
+.iapb-meta-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-muted);font-family:'DM Mono',monospace}
+.iapb-meta-item span{color:var(--cream-dim)}
+.iapb-cta-col{flex-shrink:0;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.iapb-read-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:linear-gradient(135deg,var(--amber),var(--amber-dim));color:#1c2b20;text-decoration:none;font-weight:700;font-size:13px;border-radius:8px;transition:all .3s;white-space:nowrap;box-shadow:0 6px 20px rgba(212,168,83,0.25)}
+.iapb-read-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(212,168,83,0.35)}
+.iapb-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:1px;text-align:right}
+
 /* ─── FEATURED CARD ─── */
 .featured-section{margin-bottom:56px}
-.featured-card{background:var(--bg2);border:1px solid var(--border-a);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 0 80px rgba(212,168,83,0.06),var(--shadow);transition:box-shadow .35s}
-.featured-card:hover{box-shadow:0 0 120px rgba(212,168,83,0.1),var(--shadow)}
-.featured-video-wrap{position:relative;background:#0d1710;border-right:1px solid var(--border-a)}
-.featured-video-wrap video{width:100%;display:block;min-height:320px;object-fit:cover}
-.featured-badge{position:absolute;top:16px;left:16px;background:rgba(212,168,83,0.15);border:1px solid var(--border-a);border-radius:100px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--amber)}
-.featured-info{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
-.trial-number{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-muted);margin-bottom:12px;letter-spacing:1px}
-.featured-info h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:14px}
-.featured-info p{font-size:14.5px;color:var(--text-muted);line-height:1.75;margin-bottom:20px}
-.trial-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.trial-tag{padding:5px 14px;border:1px solid var(--border-s);border-radius:100px;font-size:12px;color:var(--sage);background:var(--sage-glow)}
 
-/* Institution info inside card */
-.trial-institution{display:flex;align-items:flex-start;gap:12px;background:rgba(212,168,83,0.05);border:1px solid rgba(212,168,83,0.12);border-radius:10px;padding:14px 16px;margin-bottom:24px}
-.trial-institution-icon{font-size:20px;flex-shrink:0;margin-top:1px}
-.trial-institution-text{font-size:13px;color:var(--text-muted);line-height:1.5}
-.trial-institution-text strong{color:var(--amber);display:block;margin-bottom:2px}
+/* ── FULLY STACKED TRIAL CARD (used for all 3) ── */
+.trial-stack{display:flex;flex-direction:column;gap:40px;margin-bottom:56px}
 
-.trial-stats{display:flex;gap:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06)}
-.trial-stat{text-align:center}
-.trial-stat-val{font-family:'DM Mono',monospace;font-size:18px;color:var(--amber);font-weight:500}
-.trial-stat-lbl{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.trial-full-card{background:var(--bg2);border:1px solid rgba(255,255,255,0.05);border-radius:20px;overflow:hidden;transition:border-color .35s,box-shadow .35s;position:relative}
+.trial-full-card:hover{border-color:var(--border-a);box-shadow:0 20px 60px rgba(212,168,83,0.07)}
 
-/* ─── GRID ─── */
-.trials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
-.trial-card{background:var(--bg2);border:1px solid rgba(255,255,255,0.05);border-radius:16px;overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s}
-.trial-card:hover{border-color:var(--border-a);transform:translateY(-5px);box-shadow:0 20px 60px rgba(212,168,83,0.07)}
-.trial-video-wrap{position:relative;background:#0d1710;aspect-ratio:16/9;overflow:hidden}
-.trial-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
-.trial-video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,43,32,0.6) 0%,transparent 50%);pointer-events:none}
-.trial-num-badge{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(212,168,83,0.15);border:1px solid var(--border-a);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--amber);font-weight:500}
-.trial-card-body{padding:24px}
-.trial-card-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:1px;margin-bottom:8px}
-.trial-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--cream);margin-bottom:10px}
-.trial-card p{font-size:13.5px;color:var(--text-muted);line-height:1.65;margin-bottom:14px}
+/* top accent bar per trial */
+.trial-full-card.t1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),transparent);z-index:2}
+.trial-full-card.t2::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--sage),transparent);z-index:2}
+.trial-full-card.t3::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8fa8bc,transparent);z-index:2}
 
-/* Institution chip on cards */
-.trial-institution-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.14);border-radius:8px;padding:8px 12px;font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.4}
-.trial-institution-chip strong{color:var(--amber)}
+.trial-full-header{padding:28px 36px 22px;border-bottom:1px solid rgba(212,168,83,0.09);display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.trial-full-header-left{}
+.trial-full-eyebrow{display:flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.tvdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tvdot-amber{background:var(--amber);box-shadow:0 0 8px rgba(212,168,83,0.6)}
+.tvdot-sage{background:var(--sage);box-shadow:0 0 8px rgba(143,188,148,0.6)}
+.tvdot-blue{background:#8fa8bc;box-shadow:0 0 8px rgba(143,168,188,0.6)}
+.trial-full-header h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.trial-full-header p{font-size:13.5px;color:var(--text-muted);line-height:1.65;max-width:640px}
 
-.trial-card-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
-.trial-card-tag{padding:4px 12px;border:1px solid var(--border-s);border-radius:100px;font-size:11px;color:var(--sage);background:var(--sage-glow)}
-.trial-card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(255,255,255,0.05)}
-.trial-card-meta{font-size:12px;color:var(--text-muted);font-family:'DM Mono',monospace}
-.trial-result{display:flex;align-items:center;gap:6px}
+.trial-full-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0}
+.trial-num-pill{font-family:'DM Mono',monospace;font-size:11px;color:var(--amber);border:1px solid var(--border-a);border-radius:100px;padding:5px 14px;letter-spacing:1.5px;background:rgba(212,168,83,0.06);white-space:nowrap}
+.trial-badge-tags{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.trial-badge-tag{padding:4px 12px;border:1px solid var(--border-s);border-radius:100px;font-size:11px;color:var(--sage);background:var(--sage-glow)}
+
+/* THE VIDEO — full width, no cropping */
+.trial-full-video-wrap{background:#0d1710;width:100%;line-height:0}
+.trial-full-video-wrap video{width:100%;display:block;max-height:600px;object-fit:contain;background:#0d1710}
+
+.trial-full-footer{padding:20px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;border-top:1px solid rgba(255,255,255,0.05)}
+.trial-full-stats{display:flex;gap:28px;flex-wrap:wrap}
+.tfs-item{text-align:center}
+.tfs-val{font-family:'DM Mono',monospace;font-size:15px;color:var(--amber);font-weight:500}
+.tfs-lbl{font-size:10px;color:var(--text-muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px}
+.trial-result-pill{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--sage)}
 .result-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .result-dot.success{background:var(--sage);box-shadow:0 0 8px rgba(143,188,148,0.5)}
-.result-dot.testing{background:var(--amber);box-shadow:0 0 8px rgba(212,168,83,0.5)}
 
-/* ─── PURCHASE INTENT HIGHLIGHT ─── */
-.purchase-intent{margin-top:0;background:linear-gradient(135deg,rgba(212,168,83,0.08),rgba(143,188,148,0.05));border:1px solid var(--border-a);border-radius:14px;padding:22px 24px;display:flex;align-items:flex-start;gap:16px}
-.purchase-intent-icon{font-size:26px;flex-shrink:0}
+/* purchase intent callout */
+.purchase-intent{background:linear-gradient(135deg,rgba(212,168,83,0.07),rgba(143,188,148,0.04));border:1px solid rgba(212,168,83,0.18);border-radius:12px;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;margin:0 36px 24px}
+.purchase-intent-icon{font-size:24px;flex-shrink:0}
 .purchase-intent-text{font-size:13.5px;color:var(--text-muted);line-height:1.65}
-.purchase-intent-text strong{color:var(--amber);display:block;margin-bottom:4px;font-size:14px}
+.purchase-intent-text strong{color:var(--amber);display:block;margin-bottom:3px;font-size:14px}
 .purchase-intent-text a{color:var(--sage);text-decoration:none;font-weight:500}
 .purchase-intent-text a:hover{color:var(--cream)}
+
+/* institution chip */
+.trial-institution-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(212,168,83,0.06);border:1px solid rgba(212,168,83,0.14);border-radius:8px;padding:7px 14px;font-size:12.5px;color:var(--text-muted);line-height:1.4}
+.trial-institution-chip strong{color:var(--amber)}
 
 /* ─── OBSERVATIONS ─── */
 .observations{margin-top:64px;background:var(--bg2);border:1px solid var(--border-a);border-radius:20px;padding:48px;position:relative;overflow:hidden}
@@ -175,8 +188,28 @@ footer p{font-size:13px;color:var(--text-muted)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:900px){nav{padding:16px 20px}.nav-links{display:none}.featured-card{grid-template-columns:1fr}.featured-video-wrap{border-right:none;border-bottom:1px solid var(--border-a)}.featured-info{padding:32px 28px}.cta-band{flex-direction:column;padding:36px 28px}}
-@media(max-width:560px){.trials-grid{grid-template-columns:1fr}.observations{padding:32px 24px}.obs-grid{grid-template-columns:1fr}.location-inner{flex-direction:column}}
+@media(max-width:900px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .iapb-banner-inner{grid-template-columns:1fr;gap:20px;padding:28px 24px}
+  .iapb-logo-col{flex-direction:row;align-items:center}
+  .iapb-divider{display:none}
+  .iapb-cta-col{align-items:flex-start}
+  .iapb-date{text-align:left}
+  .cta-band{flex-direction:column;padding:36px 28px}
+  .trial-full-header{flex-direction:column}
+  .trial-full-header-right{align-items:flex-start}
+  .trial-badge-tags{justify-content:flex-start}
+  .trial-full-header{padding:22px 24px 18px}
+  .trial-full-footer{padding:16px 24px}
+  .purchase-intent{margin:0 24px 20px}
+}
+@media(max-width:560px){
+  .observations{padding:32px 24px}
+  .obs-grid{grid-template-columns:1fr}
+  .location-inner{flex-direction:column}
+  .trial-full-stats{gap:16px}
+}
 </style>
 </head>
 <body>
@@ -189,7 +222,7 @@ footer p{font-size:13px;color:var(--text-muted)}
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="index.html#solution">Solution</a>
-    <a href="trials.html" class="active">Trials</a>
+    <a href="trails.html" class="active">Trials</a>
     <a href="index.html#contact">Contact</a>
     <a href="buy.html" class="nav-buy">Buy Now</a>
   </div>
@@ -234,132 +267,164 @@ footer p{font-size:13px;color:var(--text-muted)}
   <!-- MAIN -->
   <div class="trails-main">
 
-    <!-- FEATURED TRIAL 1 -->
-    <div class="featured-section reveal">
-      <p class="section-label">Featured Trial</p>
-      <div class="featured-card" data-category="indoor">
-        <div class="featured-video-wrap">
+    <!-- ══ IAPB PUBLICATION BANNER ══ -->
+    <div class="iapb-banner reveal">
+      <div class="iapb-banner-inner">
+        <div class="iapb-logo-col">
+          <div class="iapb-globe">🌐</div>
+          <div class="iapb-org-name">IAPB Publication</div>
+        </div>
+        <div class="iapb-divider"></div>
+        <div class="iapb-content">
+          <div class="iapb-eyebrow">
+            <span class="iapb-pub-dot"></span>
+            Published Research · April 2026
+          </div>
+          <h3>Advancing Inclusive Eye Health through Vision Path at AMTZ</h3>
+          <p>Vision Path was published on the International Agency for the Prevention of Blindness (IAPB) — the leading global eye health alliance — as India's first compact assistive device for visually impaired individuals. The paper highlights how Vision Path aligns with the IAPB 2030 In Sight strategy, Universal Eye Health, and Integrated People-Centred Eye Care goals.</p>
+          <div class="iapb-meta">
+            <div class="iapb-meta-item">✍️ <span>Amit Kumar Sharma, Arpita Nayak, Nydhana Sai — AMTZ, Visakhapatnam</span></div>
+            <div class="iapb-meta-item">📅 <span>24 April 2026</span></div>
+          </div>
+        </div>
+        <div class="iapb-cta-col">
+          <a href="https://www.iapb.org/news/advancing-inclusive-eye-health-through-vision-path-at-amtz/" target="_blank" rel="noopener" class="iapb-read-btn">
+            Read on IAPB
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="iapb-date">iapb.org · 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ALL THREE TRIALS STACKED ══ -->
+    <div class="trial-stack">
+
+      <!-- Trial 1 -->
+      <div class="trial-full-card t1 reveal" data-category="indoor">
+        <div class="trial-full-header">
+          <div class="trial-full-header-left">
+            <div class="trial-full-eyebrow">
+              <span class="tvdot tvdot-amber"></span>
+              Trial 001 · Indoor · Featured
+            </div>
+            <h3>Classroom Navigation — First Indoor Run</h3>
+            <p>College students at Netra Vidyalaya, Bheemili tested Vision Path across their classroom environment. Desks, chairs, bags, and doorframes created a dense, realistic obstacle landscape — exactly the kind of scenario the device is designed for.</p>
+            <div style="margin-top:12px">
+              <span class="trial-institution-chip">🏫 <strong>Netra Vidyalaya, Bheemili</strong>&nbsp;· Indoor · College students · Dense furniture</span>
+            </div>
+          </div>
+          <div class="trial-full-header-right">
+            <div class="trial-num-pill">TRIAL · 001</div>
+            <div class="trial-badge-tags">
+              <span class="trial-badge-tag">Indoor</span>
+              <span class="trial-badge-tag">Classroom</span>
+              <span class="trial-badge-tag">Furniture Obstacles</span>
+            </div>
+          </div>
+        </div>
+        <div class="trial-full-video-wrap">
           <video controls preload="metadata">
             <source src="trail1.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <div class="featured-badge">Trial #1 · Featured</div>
         </div>
-        <div class="featured-info">
-          <div class="trial-number">TRIAL · 001</div>
-          <h2>Classroom Navigation — First Indoor Run</h2>
-          <p>College students at Netra Vidyalaya, Bheemili tested Vision Path across their classroom environment. Desks, chairs, bags, and doorframes created a dense, realistic obstacle landscape — exactly the kind of scenario the device is designed for.</p>
-
-          <div class="trial-institution">
-            <div class="trial-institution-icon">🏫</div>
-            <div class="trial-institution-text">
-              <strong>Netra Vidyalaya, Bheemili</strong>
-              Indoor classroom · College students · Dense furniture environment
-            </div>
+        <div class="trial-full-footer">
+          <div class="trial-full-stats">
+            <div class="tfs-item"><div class="tfs-val">100cm</div><div class="tfs-lbl">Max Range</div></div>
+            <div class="tfs-item"><div class="tfs-val">~50ms</div><div class="tfs-lbl">Alert Latency</div></div>
+            <div class="tfs-item"><div class="tfs-val">Dual</div><div class="tfs-lbl">Feedback</div></div>
           </div>
-
-          <div class="trial-tags">
-            <span class="trial-tag">Indoor</span>
-            <span class="trial-tag">Classroom</span>
-            <span class="trial-tag">Furniture Obstacles</span>
-            <span class="trial-tag">College Students</span>
-          </div>
-          <div class="trial-stats">
-            <div class="trial-stat">
-              <div class="trial-stat-val">100cm</div>
-              <div class="trial-stat-lbl">Max Range</div>
-            </div>
-            <div class="trial-stat">
-              <div class="trial-stat-val">~50ms</div>
-              <div class="trial-stat-lbl">Alert Latency</div>
-            </div>
-            <div class="trial-stat">
-              <div class="trial-stat-val">Dual</div>
-              <div class="trial-stat-lbl">Feedback</div>
-            </div>
-          </div>
+          <div class="trial-result-pill"><span class="result-dot success"></span> Successful</div>
         </div>
       </div>
-    </div>
 
-    <!-- GRID: TRIAL 2 & 3 -->
-    <div class="trials-grid">
-
-      <!-- Trial 2 — Indoor, Netra Vidyalaya -->
-      <div class="trial-card reveal" data-category="indoor">
-        <div class="trial-video-wrap">
+      <!-- Trial 2 -->
+      <div class="trial-full-card t2 reveal" data-category="indoor">
+        <div class="trial-full-header">
+          <div class="trial-full-header-left">
+            <div class="trial-full-eyebrow">
+              <span class="tvdot tvdot-sage"></span>
+              Trial 002 · Indoor
+            </div>
+            <h3>Classroom Navigation — Extended Indoor Session</h3>
+            <p>A second round of indoor testing at Netra Vidyalaya by another group of college students. This session explored detection performance around different obstacle heights and tighter desk configurations, pushing the range limits in a compact space.</p>
+            <div style="margin-top:12px">
+              <span class="trial-institution-chip">🏫 <strong>Netra Vidyalaya, Bheemili</strong>&nbsp;· Indoor · College students · Tight spaces</span>
+            </div>
+          </div>
+          <div class="trial-full-header-right">
+            <div class="trial-num-pill">TRIAL · 002</div>
+            <div class="trial-badge-tags">
+              <span class="trial-badge-tag">Indoor</span>
+              <span class="trial-badge-tag">Classroom</span>
+              <span class="trial-badge-tag">Tight Spaces</span>
+            </div>
+          </div>
+        </div>
+        <div class="trial-full-video-wrap">
           <video controls preload="metadata">
             <source src="trail2.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <div class="trial-video-overlay"></div>
-          <div class="trial-num-badge">02</div>
         </div>
-        <div class="trial-card-body">
-          <div class="trial-card-num">TRIAL · 002</div>
-          <h3>Classroom Navigation — Extended Indoor Session</h3>
-          <p>A second round of indoor testing at Netra Vidyalaya by another group of college students. This session explored the detection performance around different obstacle heights and tighter desk configurations, pushing the range limits in a compact space.</p>
-
-          <div class="trial-institution-chip">
-            🏫 <span><strong>Netra Vidyalaya, Bheemili</strong> · Indoor · College students</span>
+        <div class="trial-full-footer">
+          <div class="trial-full-stats">
+            <div class="tfs-item"><div class="tfs-val">50–100cm</div><div class="tfs-lbl">Range</div></div>
+            <div class="tfs-item"><div class="tfs-val">Vibration</div><div class="tfs-lbl">Primary Mode</div></div>
+            <div class="tfs-item"><div class="tfs-val">Zero</div><div class="tfs-lbl">Missed Detections</div></div>
           </div>
-
-          <div class="trial-card-tags">
-            <span class="trial-card-tag">Indoor</span>
-            <span class="trial-card-tag">Classroom</span>
-            <span class="trial-card-tag">Tight Spaces</span>
-            <span class="trial-card-tag">College Students</span>
-          </div>
-          <div class="trial-card-footer">
-            <div class="trial-card-meta">Range: 50–100 cm</div>
-            <div class="trial-result"><span class="result-dot success"></span><span style="font-size:12px;color:var(--sage)">Successful</span></div>
-          </div>
+          <div class="trial-result-pill"><span class="result-dot success"></span> Successful</div>
         </div>
       </div>
 
-      <!-- Trial 3 — Outdoor, Netra Vidyalaya + purchase intent -->
-      <div class="trial-card reveal" data-category="outdoor">
-        <div class="trial-video-wrap">
+      <!-- Trial 3 -->
+      <div class="trial-full-card t3 reveal" data-category="outdoor">
+        <div class="trial-full-header">
+          <div class="trial-full-header-left">
+            <div class="trial-full-eyebrow">
+              <span class="tvdot tvdot-blue"></span>
+              Trial 003 · Outdoor
+            </div>
+            <h3>Outdoor Grounds Trial — Real-World Walkthrough</h3>
+            <p>Testing moved outside the classroom onto the institute's open grounds. A school student from Netra Vidyalaya navigated the outdoor environment with Vision Path — detecting kerbs, poles, and uneven paths in real time. The experience was immediately convincing.</p>
+            <div style="margin-top:12px">
+              <span class="trial-institution-chip">🏫 <strong>Netra Vidyalaya, Bheemili</strong>&nbsp;· Outdoor · School student · Open grounds</span>
+            </div>
+          </div>
+          <div class="trial-full-header-right">
+            <div class="trial-num-pill">TRIAL · 003</div>
+            <div class="trial-badge-tags">
+              <span class="trial-badge-tag">Outdoor</span>
+              <span class="trial-badge-tag">Open Grounds</span>
+              <span class="trial-badge-tag">School Student</span>
+            </div>
+          </div>
+        </div>
+        <div class="trial-full-video-wrap">
           <video controls preload="metadata">
             <source src="trail3.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
-          <div class="trial-video-overlay"></div>
-          <div class="trial-num-badge">03</div>
         </div>
-        <div class="trial-card-body">
-          <div class="trial-card-num">TRIAL · 003</div>
-          <h3>Outdoor Grounds Trial — Real-World Walkthrough</h3>
-          <p>Testing moved outside the classroom onto the institute's open grounds. A school student from Netra Vidyalaya navigated the outdoor environment with Vision Path — detecting kerbs, poles, and uneven paths in real time. The experience was immediately convincing.</p>
-
-          <div class="trial-institution-chip">
-            🏫 <span><strong>Netra Vidyalaya, Bheemili</strong> · Outdoor · School student</span>
+        <div class="purchase-intent">
+          <div class="purchase-intent-icon">💬</div>
+          <div class="purchase-intent-text">
+            <strong>"I want to buy this."</strong>
+            After just one outdoor trial, the student expressed an immediate wish to purchase Vision Path — a powerful, unscripted validation of the device's real-world impact. <a href="buy.html">Order yours →</a>
           </div>
-
-          <div class="trial-card-tags">
-            <span class="trial-card-tag">Outdoor</span>
-            <span class="trial-card-tag">Open Grounds</span>
-            <span class="trial-card-tag">School Student</span>
-            <span class="trial-card-tag">Real-World Path</span>
+        </div>
+        <div class="trial-full-footer">
+          <div class="trial-full-stats">
+            <div class="tfs-item"><div class="tfs-val">LED ON</div><div class="tfs-lbl">Night Assist</div></div>
+            <div class="tfs-item"><div class="tfs-val">Outdoor</div><div class="tfs-lbl">Environment</div></div>
+            <div class="tfs-item"><div class="tfs-val">Dual</div><div class="tfs-lbl">Feedback</div></div>
           </div>
-          <div class="trial-card-footer">
-            <div class="trial-card-meta">LED Assist ON</div>
-            <div class="trial-result"><span class="result-dot success"></span><span style="font-size:12px;color:var(--sage)">Successful</span></div>
-          </div>
-
-          <!-- Purchase intent callout -->
-          <div class="purchase-intent" style="margin-top:16px">
-            <div class="purchase-intent-icon">💬</div>
-            <div class="purchase-intent-text">
-              <strong>"I want to buy this."</strong>
-              After just one outdoor trial, the student expressed an immediate wish to purchase Vision Path — a powerful validation of the device's real-world impact. <a href="buy.html">Order yours →</a>
-            </div>
-          </div>
-
+          <div class="trial-result-pill"><span class="result-dot success"></span> Successful</div>
         </div>
       </div>
 
-    </div>
+    </div><!-- /trial-stack -->
 
     <!-- OBSERVATIONS -->
     <div class="observations reveal">
@@ -394,7 +459,7 @@ footer p{font-size:13px;color:var(--text-muted)}
     <div class="cta-band reveal">
       <div class="cta-text">
         <h2>Ready to Experience Vision Path?</h2>
-        <p>Validated by real students at Netra Vidyalaya — from classroom corridors to open grounds. Join the growing community navigating more independently with Vision Path.</p>
+        <p>Validated by real students at Netra Vidyalaya and recognised by the IAPB — from classroom corridors to open grounds. Join the growing community navigating more independently with Vision Path.</p>
       </div>
       <div class="cta-actions">
         <a href="buy.html" class="btn-primary">
@@ -405,9 +470,9 @@ footer p{font-size:13px;color:var(--text-muted)}
       </div>
     </div>
 
-  </div>
+  </div><!-- /trails-main -->
 
-</div>
+</div><!-- /page -->
 
 <footer>
   <div class="footer-brand">Vision Path</div>
@@ -432,18 +497,14 @@ reveals.forEach(el => {
 function filterTrials(category, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const featured = document.querySelector('.featured-section');
-  const cards = document.querySelectorAll('.trial-card');
-  if (category === 'all') {
-    featured.style.display = 'block';
-    cards.forEach(c => c.style.display = 'block');
-  } else {
-    const featCat = document.querySelector('.featured-card').getAttribute('data-category');
-    featured.style.display = featCat === category ? 'block' : 'none';
-    cards.forEach(c => {
-      c.style.display = c.getAttribute('data-category') === category ? 'block' : 'none';
-    });
-  }
+  const cards = document.querySelectorAll('.trial-full-card');
+  cards.forEach(c => {
+    if (category === 'all' || c.getAttribute('data-category') === category) {
+      c.style.display = 'block';
+    } else {
+      c.style.display = 'none';
+    }
+  });
 }
 
 window.addEventListener('scroll', () => {
