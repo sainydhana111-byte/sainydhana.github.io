@@ -559,16 +559,16 @@ h1.hero-title .accent { color:var(--amber); font-style:italic; display:block }
 .endorsement-photo {
   width:100%; display:block;
   object-fit:cover;
-  /* FIX 1: Show top/head of person */
-  object-position:center 5%;
-  aspect-ratio:4/3;
+  /* center 60% anchors to faces/chests in typical event group photos */
+  object-position:center 60%;
+  aspect-ratio:3/4;
   border:2px solid var(--border-amb);
   transition:transform .5s cubic-bezier(.22,.61,.36,1);
 }
 .endorse-frame:hover .endorsement-photo { transform:scale(1.03) }
 
 .endorsement-photo-placeholder {
-  width:100%; aspect-ratio:4/3; border-radius:18px;
+  width:100%; aspect-ratio:3/4; border-radius:18px;
   background:var(--bg-alt); border:2px dashed var(--border-amb);
   display:flex; flex-direction:column; align-items:center;
   justify-content:center; gap:12px;
@@ -1315,74 +1315,8 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
   </div>
 </div>
 
-<!-- ══ COMMUNITY ══ -->
-<div class="sec-div lt-dk"></div>
-<div class="community-section">
-  <div class="wrap reveal" style="position:relative;z-index:2">
-    <div class="section-label on-dark">Community</div>
-    <h2 class="section-title on-dark">Real <em>Conversations</em></h2>
-    <p class="section-body on-dark">Vision Path connects with the people it serves most — visually impaired individuals sharing how accessible technology changes their everyday experience.</p>
-    <div class="community-inner" style="margin-top:52px">
-      <div class="community-img-wrap">
-        <!-- Corner-framed community image -->
-        <div class="pf-wrap" data-corner-color="sage" style="border-radius:20px;overflow:hidden">
-          <div class="pf-shimmer"></div>
-          <img src="community.png" class="community-img"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-            alt="Visually impaired individuals discussing Vision Path">
-          <div class="community-img-placeholder" style="display:none">
-            <span>🤝</span>
-            <p>Add your generated community image here<br><small style="font-size:10px;opacity:.6;letter-spacing:1px">community.png</small></p>
-          </div>
-        </div>
-        <div class="community-overlay-chip">
-          <span class="chip-dot"></span>
-          <span class="chip-text">Community Voices · 2026</span>
-        </div>
-      </div>
-      <div class="community-content">
-        <div class="section-label on-dark amber">What People Are Saying</div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--dark-text);margin-bottom:8px;line-height:1.2">Voices from the <em style="color:var(--amber-light);font-style:italic">Community</em></h3>
-        <p style="font-size:14px;color:var(--dark-muted);line-height:1.75;margin-bottom:4px">From field interactions and demonstrations, here's how Vision Path resonated with visually impaired users and their families.</p>
-        <div class="community-quotes">
-          <div class="voice-card">
-            <p class="voice-text">"I never felt this confident walking alone. The buzzing tells me exactly when to stop — it's like having a friend beside me."</p>
-            <div class="voice-meta">
-              <div class="voice-avatar">👤</div>
-              <div class="voice-attr">
-                <small>Field Demo Participant</small>
-                <span>Visually Impaired User, Visakhapatnam</span>
-              </div>
-            </div>
-          </div>
-          <div class="voice-card">
-            <p class="voice-text">"My son used to need someone with him at all times. With Vision Path, he moves around the house on his own. That freedom means everything."</p>
-            <div class="voice-meta">
-              <div class="voice-avatar">👤</div>
-              <div class="voice-attr">
-                <small>Family Member</small>
-                <span>Parent of a Visually Impaired Youth</span>
-              </div>
-            </div>
-          </div>
-          <div class="voice-card">
-            <p class="voice-text">"Simple, affordable, and it actually works. This is exactly what our community has needed for years."</p>
-            <div class="voice-meta">
-              <div class="voice-avatar">👤</div>
-              <div class="voice-attr">
-                <small>Community Interaction</small>
-                <span>Accessibility Advocate, Andhra Pradesh</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ══ ENDORSEMENT ══ -->
-<div class="sec-div dk-warm"></div>
+<div class="sec-div lt-dk"></div>
 <div class="endorsement-section reveal">
   <div class="wrap">
     <div style="margin-bottom:52px">
