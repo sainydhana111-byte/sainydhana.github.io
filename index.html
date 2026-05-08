@@ -314,6 +314,103 @@ h1.hero-title .accent { color:var(--amber); font-style:italic; display:block }
 /* Kill old transition divs */
 .t-lt-dk, .t-dk-lt, .t-alt-dk, .t-dk-alt, .t-warm-dk, .t-dk-warm { display:none }
 
+/* ─── HERO VIDEO SHOWCASE ─── */
+.hero-video-section {
+  background:var(--bg-alt);
+  padding:72px 0 80px;
+  position:relative;
+}
+
+.hero-video-eyebrow {
+  display:flex; align-items:center; justify-content:center;
+  gap:18px; margin-bottom:32px;
+  font-family:'DM Mono',monospace; font-size:10.5px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--text-muted);
+}
+.hv-label-line {
+  flex:1; max-width:120px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--border-amb));
+}
+.hv-label-line:last-child {
+  background:linear-gradient(90deg, var(--border-amb), transparent);
+}
+.hv-label-text { color:var(--amber); white-space:nowrap }
+
+.hero-video-frame {
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 32px 96px rgba(26,43,29,0.16), 0 0 0 1px var(--border-amb);
+  background:#0a0f0b;
+  max-width:900px;
+  margin:0 auto;
+}
+
+/* Animated amber glow behind the frame */
+.hv-glow {
+  position:absolute; inset:-2px; z-index:0; border-radius:24px;
+  background:conic-gradient(from 0deg, var(--amber) 0deg 40deg, transparent 40deg 180deg, var(--sage) 180deg 220deg, transparent 220deg 360deg);
+  animation:hvGlowSpin 8s linear infinite;
+  opacity:0.22;
+  filter:blur(12px);
+}
+@keyframes hvGlowSpin { to { transform:rotate(360deg) } }
+
+.hero-video-frame video {
+  display:block; width:100%; position:relative; z-index:2;
+  max-height:540px; object-fit:cover;
+  border-radius:22px;
+}
+
+/* Corner bracket accents */
+.hv-corner {
+  position:absolute; width:32px; height:32px; z-index:5; pointer-events:none;
+}
+.hv-corner::before, .hv-corner::after {
+  content:''; position:absolute; border-radius:2px; background:var(--amber-light);
+  box-shadow:0 0 8px rgba(224,176,64,0.6);
+}
+.hv-corner::before { width:2.5px; height:32px; top:0 }
+.hv-corner::after  { height:2.5px; width:32px; top:0 }
+.hv-tl { top:0; left:0 }
+.hv-tl::before { left:0 } .hv-tl::after { left:0 }
+.hv-tr { top:0; right:0 }
+.hv-tr::before { right:0 } .hv-tr::after { right:0 }
+.hv-bl { bottom:0; left:0 }
+.hv-bl::before { bottom:0; top:auto; left:0 }
+.hv-bl::after  { bottom:0; top:auto; left:0 }
+.hv-br { bottom:0; right:0 }
+.hv-br::before { bottom:0; top:auto; right:0 }
+.hv-br::after  { bottom:0; top:auto; right:0 }
+
+/* Bottom overlay tag */
+.hv-overlay-tag {
+  position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+  z-index:6;
+  display:flex; align-items:center; gap:9px;
+  background:rgba(22,32,25,0.82);
+  border:1px solid rgba(212,168,83,0.25);
+  border-radius:100px; padding:8px 20px;
+  backdrop-filter:blur(14px);
+  font-family:'DM Mono',monospace; font-size:10.5px;
+  letter-spacing:1.8px; text-transform:uppercase;
+  color:var(--dark-muted); white-space:nowrap;
+}
+.hv-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--sage-light);
+  box-shadow:0 0 8px rgba(106,170,116,0.7);
+  flex-shrink:0;
+  animation:pulseDot 2s infinite;
+}
+
+.hero-video-caption {
+  text-align:center; margin-top:22px;
+  font-size:14px; color:var(--text-muted);
+  font-style:italic; letter-spacing:.2px;
+  font-family:'Cormorant Garamond',serif; font-size:17px;
+}
+
 /* ─── PROBLEM / SOLUTION CARDS ─── */
 .ps-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:52px }
 .ps-card {
@@ -1089,6 +1186,41 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
     scroll
   </div>
 </header>
+
+<!-- ══ HERO VIDEO SHOWCASE ══ -->
+<div class="hero-video-section">
+  <div class="wrap">
+    <div class="hero-video-eyebrow reveal">
+      <span class="hv-label-line"></span>
+      <span class="hv-label-text">Real People · Real Impact</span>
+      <span class="hv-label-line"></span>
+    </div>
+    <div class="hero-video-frame reveal">
+      <div class="hv-corner hv-tl"></div>
+      <div class="hv-corner hv-tr"></div>
+      <div class="hv-corner hv-bl"></div>
+      <div class="hv-corner hv-br"></div>
+      <div class="hv-glow"></div>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        controls
+        preload="auto"
+      >
+        <source src="hero_video.mp4" type="video/mp4">
+      </video>
+      <div class="hv-overlay-tag">
+        <span class="hv-dot"></span>
+        Visually Impaired Users · Product Experience
+      </div>
+    </div>
+    <p class="hero-video-caption reveal">
+      Hear directly from the people Vision Path was built for — navigating confidently, sharing their experience.
+    </p>
+  </div>
+</div>
 
 <!-- ══ PROBLEM + SOLUTION ══ -->
 <div id="problem" class="lt-section">
