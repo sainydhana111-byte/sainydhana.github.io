@@ -62,7 +62,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   max-height:340px;
   display:flex;align-items:center;justify-content:center;position:relative
 }
-.product-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;max-height:340px}
+.product-image-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  object-position:center top;
+  position:absolute;inset:0;
+}
 .product-image-placeholder{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--text-muted);font-size:13px}
 .product-badge{position:absolute;top:18px;left:18px;background:rgba(143,188,148,0.12);border:1px solid var(--border-s);border-radius:100px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--sage)}
 .product-meta{margin-top:28px}
