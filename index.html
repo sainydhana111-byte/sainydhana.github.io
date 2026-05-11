@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+F<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
-   VISION PATH — Light-first design system
+   VISION PATH — Light-first design syste
 ═══════════════════════════════════════════════════ */
    
 :root {
@@ -1114,11 +1114,6 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
 .wa-footer-icon:hover { fill:#25D366!important; filter:drop-shadow(0 0 5px rgba(37,211,102,0.4)) }
 
 /* ─── FEEDBACK CARDS ─── */
-.fb-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
 
 .fb-card {
   position: relative;
@@ -1279,6 +1274,14 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+.fb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media(max-width:700px) {
+  .fb-grid { grid-template-columns: 1fr; }
 }
 
 /* ─── RESPONSIVE ─── */
@@ -1576,7 +1579,7 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
     <div style="text-align:center;margin-bottom:64px">
       <div class="section-label amber" style="justify-content:center">Trusted by Experts</div>
       <h2 class="section-title" style="margin:0 auto 14px">
-        Words that <em>Validate</em> the Vision
+        <em>Feedback</em> 
       </h2>
       <p class="section-body" style="margin:0 auto;text-align:center">
         From AMTZ leadership to special educators — hear what the people closest to the problem think about the solution.
@@ -1589,7 +1592,6 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
       <div class="fb-card fb-card--amber">
         <div class="fb-card__glow"></div>
         <div class="fb-card__inner">
-          <div class="fb-card__tag">AMTZ Leadership</div>
           <div class="fb-card__quote-mark">"</div>
           <p class="fb-card__text">Vision Path is an accurately working smart mobility device that balances a lightweight, durable design with essential safety features, such as the integrated high-visibility LED which alerts the public to the user's presence during night-time navigation.</p>
           <div class="fb-card__footer">
@@ -1606,7 +1608,6 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
       <div class="fb-card fb-card--sage">
         <div class="fb-card__glow"></div>
         <div class="fb-card__inner">
-          <div class="fb-card__tag">Safety Feedback</div>
           <div class="fb-card__quote-mark">"</div>
           <p class="fb-card__text">The inclusion of an external LED status indicator is a brilliant safety addition; it serves as a critical visual signal to pedestrians and drivers, effectively preventing accidents in low-visibility or crowded environments.</p>
           <div class="fb-card__footer">
@@ -1623,7 +1624,6 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
       <div class="fb-card fb-card--amber">
         <div class="fb-card__glow"></div>
         <div class="fb-card__inner">
-          <div class="fb-card__tag">Institutional Feedback</div>
           <div class="fb-card__quote-mark">"</div>
           <p class="fb-card__text">Our teachers correctly identified that night-time safety is a major concern; the LED light on the Vision Path acts as a beacon, ensuring that our students are easily identifiable to others while walking after sunset.</p>
           <div class="fb-card__footer">
@@ -1640,7 +1640,6 @@ footer p { font-size:13px; color:var(--text-muted); letter-spacing:.4px }
       <div class="fb-card fb-card--sage">
         <div class="fb-card__glow"></div>
         <div class="fb-card__inner">
-          <div class="fb-card__tag">Educator Feedback</div>
           <div class="fb-card__quote-mark">"</div>
           <p class="fb-card__text">This device's light feature is a thoughtful 'public awareness' tool; it bridges the communication gap by silently notifying the surrounding public that a person with visual impairment is navigating the path.</p>
           <div class="fb-card__footer">
